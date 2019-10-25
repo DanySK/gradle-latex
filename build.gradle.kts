@@ -1,3 +1,4 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -66,6 +67,7 @@ tasks {
             showStackTraces = true
             showStandardStreams = true
             events(*TestLogEvent.values())
+            exceptionFormat = TestExceptionFormat.FULL
         }
     }
     register("createClasspathManifest") {

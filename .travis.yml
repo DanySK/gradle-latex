@@ -59,7 +59,7 @@ jobs:
       env:
         - *reference_jdk
       script:
-        - ./gradlew clean check
+        - ./gradlew clean check --stacktrace --debug
     - stage: deploy
       name: "Reports and deployment"
       if: repo = env(OFFICIAL_REPO_SLUG) AND type != pull_request
