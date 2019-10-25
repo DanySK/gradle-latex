@@ -55,7 +55,6 @@ tasks.withType<DokkaTask> {
 publishOnCentral {
     projectDescription.set(projectDetails)
     projectLongName.set(fullName)
-    projectUrl.set(websiteUrl)
 }
 
 tasks {
