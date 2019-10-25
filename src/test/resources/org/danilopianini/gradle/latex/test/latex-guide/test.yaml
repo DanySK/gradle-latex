@@ -1,0 +1,11 @@
+tests:
+  - description: "latex guide by M. Gates should build"
+    configuration:
+      tasks: [ buildLatex ]
+      options: [ ] # [ --debug ]
+    expectation:
+      file_exists: [ latex.pdf ]
+      success:
+        - buildLatex
+        - pdfLatex.latex
+      failure:
