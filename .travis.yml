@@ -42,10 +42,10 @@ env:
     - OFFICIAL_REPO_SLUG="DanySK/gradle-latex"
   matrix:
     - *reference_jdk
-    - JDK="adopt-openj9@1.8"
-    - JDK="adopt@1.11"
-    - JDK="adopt-openj9@1.11"
-    - JDK="adopt@1.12"
+#    - JDK="adopt-openj9@1.8"
+#    - JDK="adopt@1.11"
+#    - JDK="adopt-openj9@1.11"
+#    - JDK="adopt@1.12"
 matrix:
   exclude:
     - os: *reference_os
@@ -70,8 +70,8 @@ jobs:
         - secure: "PmfoSUyVGwyxXLoODbWMLBMdsaaFD79/QwKVAlyABVqpCG+iy5xJSt7BC6y0dkz+wwXf4XhnX0dxkIMH8VbHl56K8H4BhjOUN1CoSlFmtLo78pZhCuCy1Sm5BJn6fTE+VCBGUOfA5gMHvS3wRbWGvRqri/03oIE88Atn5BGIiAcNMGT5ukClf3KYHrQ2Gk2s9Uoq1feTE4yu9j05GXythTYgpRUH7vBBoYSDf1EW1MhSfBtTRkKfkmgc3qnU8PmgPTD5OjjTMNszIg04z2zr53v5L/T6DmZmvNkfIOaLV9IJwPfPti6oMG3UPXXf7oH+jD2du8QB6NA+K6UMOVnaVrfQAQZrABa2F9Ge/2W7WOHvdQ+GMf7oYPsunTfdGfVqQtGKG6S5yHPdiwWug0DH/cgP2k2FIQXqNgfEJYikhjdZZu2GtBaBlyR0K3f1eXuhTBsZ2JJT4ctAFTap4epNIiEQJ0ASc8ZRjx8/Y0xEQh2E4SCbEgXSEEcH5c1zL/Nhls+V9lBRjWBlcVlnTIjlL8JqCz3akkkqJyFMBF8urMG3ZHY5Zg9EKylwSj6FK4VC2KngS3fzck58Rir1Eax2TQ35Ar846gPDXbHKPjer+N+5tAQFk6tfz4QQdtFnBOlJZlKhMWSpkLzzwugM60gKLwK5dIzLwGssFZdUd19UUOw="
         - secure: "HHmNQ36u6NkXYWYW61ZVTae0vAISYw6NlzxtrdigRnqJgaMpmSmaWj7Us/obk8Q1RK2jCRnFZ1vMrGR5NydjTROk8+G2gU2Po76ZtZayU4JQuWoxWQy4Cus9hkq6YijyouxjHGBaGgZcMPAjke/9QFDlK2tQB7k8cIMO7EDN2rrE9ZLokYyJ01kT7hJ+dab8+5qQGDpJRpcThi/V3ERATzHMbVnfuLgIic55EApcyxPD1562XItQPUriccxP2l+skNA0rO98JocoPUbRia2RD7PjSP4sL7pNBA9TKsbpYf5eUrU0RKo5XfsLOlMH4fSqfbKkSbaVrDxobnPu+wRXRdLa7Wcve0SOxJqboBc7aXBRzm+fcoXEfToP6BF6NbC6fzFIwOrPFRyeqVqPLWGr00Oytu4CQjRDBYjvenK8EZHTZ+BUrBx2r/C2L2Xhxl6UeFDcoTHgzqC2NsidbGZ+N3Nn/NPeqGgkgn+fjqiZX9HaSrsAlQA2WQKIkMVGsZ3QdFQsxUkFtnNh4nNCpvsj41qlag2rha0ecIWiuZieqisAS0w2lDkYvxqgeLy3Aj+ZZAq+1LD6gmdOm+9PKBOTh9vPNzwFpbf4QSyUN5Xsk4orNYNCUMpPLLJlM5J3L/9+zcdecEBPODM6LE6f+YYDB+kGkf3NmoWtsZzL+4pWQCc="
         # Plugin portal
-        - secure: "AbWPSVAeZsS4G6gr0AjVVrRMgubCpesfiw8x7SA/CEVNCTByUlR7HvWYeGYVZMIx0lmc1LgcBVAMGfE8ZtYeLYdYeosG7kSxE3/30jfe/bPT21V0FtPYy8akmlvuBRAaRvE6eqoEwu2uiWU8tXTS0oFwjaarVruo8wvcJ2DdzrKmUDJbksJhle29Yn8Ra0QMEZbZKHKY8uhYwE+TKrFuaW6+KRcRP141nSUYZ5DQt/58WdToqjjJtXd+6cvNXGfTvPH9i7ACzdikxM9KBv8+O/rv5WB03jlurUczz9Zz7YskyGs++K+qW0scLy23XylJ777b+cjuOBTDnx8kNnjx3ibPgYjfO7j1Wcx8Vc8q6ssUkmn0vwdHqdA/DugFfpsRiRqX1d0askyqAcoyY/0Ho8X4eQ8CukqjJ1ammfVmmvLH5icMbC2QV/2XAsf8FwlMF1yxhFfnqY9cVuRPos48ZQ5P9U2jHj+q8WtANALggXyaYKfh6r4lbdgEy/bYi+gor/Fs1C6jxDw0Z9eIfxiJzozqt0fUTDIN9rbllqpwyJjWsHBKLv/GzCSAzE33QK26Ehu/2tCovGN1HV4n6j6mEwqKRAmG0OM5o0gOaPvi8EGYV52mCVCLr2yaRf+JAgrUDVF3xQxHaSv9SrPRvFZpWSLh7QFcLWBkKlGnTYsDIGs="
-        - secure: "UgfWEyL5kCivP2W+ld97lkD0J1t/JdE8oFF8OqgChWrcV0iGEYciatoRuWlBuDBxzPOYCgixy8jM75GFZIf6Ofc1tbRqaNf6FTYYZ6BOAfMErFwS/kO80Re0Uc+IQEiK5w55QVrBgSqhi7MgCmdVF8DrrztMi56h8uzEhDgZUjUFckaX9eEd5LGMiTWltuVEYsEvQ+JJhgMMGj11dCLHzXz+7qT05/htRkvQpz2eXCc3MsUEoH605S3L03iQUn5jc0+TUQmiolI2NSnN2JyXkK6gHzWADKuKZCqxl8KwEgSECSfwI3p2yNQBz6Tpl7fNRLh3lTFD7vfCh+ANC7Of/dCj368/3mCINC9r7hQklWHRVYNGjE8csvuuzMgMi2fSOrxAfyrKQVFETJ3ylFnc6X8fHfSCBWlqN7Z4VuHiJVdDV1nHBms3Lwa2h1XDRRhePsqIg7k/LNF4DVLFP8Pe17QCPIE769rJKIVJHy/0MwwsVY2M53XHHnSBUJ3RJ3A02dv3TsAba/rTKPkgWBHtk05+zCvYi2K3ImiAvypetCeM5dO0f7JDNJvKVP/f9kdzL9I6Bug+M5xepVGZWNroi5W67GZE3Qra/U887X8ZSz6OlPoOoKQJUgWeDw3a9ZW/w+LDVp6HY06HSBiBQr+nBht/MwWcHS4OEcki0s+wS5c="
+        - secure: "Y0emT3Jfw1mUhTsycOR6yIJb+XchGQObK7NVyhWJDWZHdtST5DjgIPCd/tUKt6MbDqQ16lN3GLHV5NNU9vP1aB6ErfqN2rViVP+h1fQaUb3FnyWRmnUrttUsrLrO1r6xITY3EkMKtvnT/nndkxIjIxZ1tjR5ozaVvdnRUgLeH/ggzWMM19G/M3vAw5y/ZpNWr2OMQN3h3AzIAe5BTo9e786NuvLyQHoXEMtSihcmhKulgfID7KPAM9hSx5JweYbMiGzGOCI02fxHXjkgOtdGaVcBKlXhTV0jvo1azGCKylSM1ppIVB60d5ikbgTDzPGvuDbDaao3qi+wVf/RdOjXpbvtrgjL0CcU0LUgBKgNi7PD68URmGOnWEzfLt4Tmqr2y5YADWwBsXEhlHqHoM4O637/vSwqnpqgukaP1R6ghIFuDHU5IGEZKqzggcN+VmTb/6AnES4DCBTYr4enEmB1GPY+aKPGOzxOK7dMGEKE5/OwFgNcvN/I05gQkM1hYEDOcXH1r+lBsrdJ82cLFPE4IMmYMmzKduYXUC7iHWiHFHDpO1cFs1QQKP4wNmXipUW3o/is4Udl8HnONLK5yivWMfnV2+RPOOm0d/kGF7+0V7wtVlp2CozZJbsN3ZEPkbG7cLYuIs6hD5ZOpvrxrbnBfKideonG31EDZOcCxXEREbc="
+        - secure: "Vsmc+GYLggPMGVxyvxbM0hUgOdelDysTk8JrlaBbhU9jIaKPRIvf3s6fhV1U0frDEr/7ifmnuqxKE/ByAz3BmDB0vI5gbi5Z8nvRxSC2DeTURx0zHqvlFvmCCWT3wG30kmLdskIz2wauGUqa00u79APqBU8mXdJdJLafr8iqSOnHIsotD2XN4n+mD2+MnZCguLZpPo+SGbPVrCMC+PS4/b+OeCGAIsYHt1OjmxRzmuhqx1GyZT872HR4Q/+WgDL74STwaCVeGQAZapxKKqYFrzOaZLtndoD21ZuboiK2KfaTFdUmAorSAAVsPo8jGKh44hnFo8cytEak0zKk8XXvYFmH/AlFELhKC5oVoBDrGiG11LEvXWHgTVnbPMjSNSmaUEOOY6Nan2kDNOR1iN4d11qEj4UJRV1Of1xzJCUbzdndYQAtbX7e4i4k19INh3yKz9bCctwyMyVEgNLoLFqINYiKrec8/5h8lDa07sGFX7DtwdeXZqcdDHS3WyIj+KxmA38QDlbDFoGxwmwnleWxWFQrGqfygh7zP3mY+iCuJTEygEYI2fSI4N0lUWdPnkTAVCbBabHJLoXpi50zacKcPqRGA0wO6eKybb+xn6Agn7+wHgaQhvE81tpoTgzhn1y6Cr5LRpUEIgRjKmphuA69o4JQY/xZ/6NEH8WTd9xDWIY="
         - PUBLISH="true"
         - *reference_jdk
       install:
@@ -81,7 +81,7 @@ jobs:
       script:
         - ./gradlew sourcesJar javadocJar sign
       after_success:
-        - ./gradlew publishPlugins --stacktrace
+        - ./gradlew publishPlugins -Pgradle.publish.key=$GRADLE_PUBLISH_KEY -Pgradle.publish.secret=$GRADLE_PUBLISH_SECRET --stacktrace
         - ./gradlew publishAll --stacktrace
 before_install:
   - curl "${GRAVIS}.install-jdk-travis.sh" --output .install-jdk-travis.sh
