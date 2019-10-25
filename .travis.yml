@@ -6,8 +6,6 @@ language: bash
 git:
   depth: false
 os:
-  - osx
-  - windows
   - *reference_os
 dist: bionic
 addons:
