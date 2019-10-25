@@ -58,7 +58,7 @@ jobs:
       env:
         - *reference_jdk
       script:
-        - ./gradlew clean check --stacktrace --debug
+        - ./gradlew clean check
     - stage: deploy
       name: "Reports and deployment"
       if: repo = env(OFFICIAL_REPO_SLUG) AND type != pull_request
@@ -77,7 +77,7 @@ jobs:
         - ./gradlew sourcesJar javadocJar sign
       after_success:
         - ./gradlew publishPlugins --stacktrace
-        - ./gradlew publishMavenCentralPublicationToMavenRepository --stacktrace
+        - ./gradlew publishAll --stacktrace
 before_install:
   - curl "${GRAVIS}.install-jdk-travis.sh" --output .install-jdk-travis.sh
   - source .install-jdk-travis.sh
