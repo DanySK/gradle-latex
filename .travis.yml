@@ -60,6 +60,7 @@ jobs:
       script:
         - ./gradlew clean check
     - stage: deploy
+      addons: true
       name: "Reports and deployment"
       if: repo = env(OFFICIAL_REPO_SLUG) AND type != pull_request
       os: *reference_os
