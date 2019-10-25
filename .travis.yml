@@ -29,6 +29,8 @@ addons:
     - tree
     # For git latexdiff
     - latexdiff
+    # Image processing
+    - inkscape
 stages:
   - check
   - test
