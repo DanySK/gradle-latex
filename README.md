@@ -57,7 +57,7 @@ latex {
     waitUnit.set(TimeUnit.MINUTES) // Time unit for the number above
     pdfLatexCommand.set("pdflatex")
     bibTexCommand.set("bibtex")
-    "myMainLatexFile"() {
+    "myMainLatexFile" {
         dependsOn = emptyList<LatexArtifact>()
         extraArguments = listOf("-shell-escape", "-synctex=1", "-interaction=nonstopmode", "-halt-on-error")
         quiet = null // Inherits global setting
