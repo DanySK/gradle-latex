@@ -52,9 +52,9 @@ The following examples shows the available options and their default values.
 ```kotlin
 latex {
     quiet.set(true)
-    terminalEmulator.set("bash")
-    waitTime.set(1)
-    waitUnit.set(TimeUnit.MINUTES)
+    terminalEmulator.set("bash") // Your terminal
+    waitTime.set(1) // How long before considering a process stalled
+    waitUnit.set(TimeUnit.MINUTES) // Time unit for the number above
     pdfLatexCommand.set("pdflatex")
     bibTexCommand.set("bibtex")
     "myMainLatexFile"() {
