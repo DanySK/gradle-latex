@@ -27,16 +27,21 @@ latex {
 This configuration guesses your main `tex` file to be `myMainLatexFile.tex`, autodetects if a `myMainLatexFile.bib` is
 present, and builds the resulting `myMainLatexFile.pdf`.
 
-#### Building multile main files
+#### Building multiple main files
 
 ```kotlin
 latex {
-    "project1/main"()
-    "project2/main"()
+    "oneFile"()
+    "anotherFile"()
 }
 ```
 
 You can have one entry in the latex section of your `build.gradle.kts` per project you want to build.
+In case your files are spread across multiple directories,
+consider each sub-directory a subproject and configure Gradle accordingly.
+
+See for instance the [example with Elsevier's CAS LaTeX template](https://github.com/DanySK/gradle-latex/tree/master/src/test/resources/org/danilopianini/gradle/latex/test/elsevier-cas),
+in particular look at `settings.gradle.kts` and `build.gradle.kts` both in the root and in the `doc` folder
 
 #### Configuration options
 
@@ -68,8 +73,8 @@ while project3 build can start only after both the former completed successfully
 
 ```kotlin
 latex {
-    val project1 = "project1/main"()
-    val project2 = "project2/main"()
+    val project1 = "project1"()
+    val project2 = "project2"()
     "project3" {
         dependsOn = setOf(project1, project2)
     }
