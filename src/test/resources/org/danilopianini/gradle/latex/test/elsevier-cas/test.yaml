@@ -1,0 +1,15 @@
+tests:
+  - description: "Elsevier Latex Template should build"
+    configuration:
+      tasks: [ buildLatex ]
+      options: [] # [ --stacktrace, --debug ]
+    expectation:
+      file_exists:
+        - cas-dc-template.pdf
+        - cas-sc-template.pdf
+        - doc/elsdoc-cas.pdf
+      success:
+        - buildLatex
+        - bibtex.cas-dc-template
+        - bibtex.cas-sc-template
+      failure:

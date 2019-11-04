@@ -12,9 +12,10 @@ import java.nio.file.Files
 open class BibtexTask : LatexTask() {
 
     @InputFiles
-    override fun inputFiles(): FileCollection = project.files(artifact.bib)
+    override fun inputFiles(): FileCollection = project.files(
+        *(listOf(artifact.aux, artifact.tex, artifact.bib).filterNotNull().toTypedArray()))
 
-    override fun getDescription() =  "Uses BibTex to compile ${artifact.bib} into ${artifact.name}.bbl"
+    override fun getDescription() =  "Uses BibTex to compile ${artifact.aux} into ${artifact.name}.bbl"
 
     /**
      * Execute bibtex command for given latex artifact.
@@ -23,18 +24,13 @@ open class BibtexTask : LatexTask() {
      */
     @TaskAction
     fun bibTex() {
-        require(artifact.bib != null) {
-            throw GradleException("Bibtex task cannot run on artifacts without a bib configured such as $artifact")
-        }
         if (!artifact.aux.exists()) {
             throw GradleException("${artifact.aux.absolutePath} does not exist, cannot invoke ${extension.bibTexCommand.get()}")
         }
         if (Files.lines(artifact.aux.toPath()).anyMatch { it.contains("""\citation""") }) {
-            val bib = artifact.bib!!
-            if (!bib.exists()) {
-                throw GradleException("${bib.absolutePath} does not exist, cannot invoke ${extension.bibTexCommand.get()}")
-            }
             "${extension.bibTexCommand.get()} ${artifact.aux.name}".runScript()
+        } else {
+            Latex.LOG.warn("No citation in ${artifact.aux.absolutePath}, bibtex not invoked.")
         }
     }
 

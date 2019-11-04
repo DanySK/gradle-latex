@@ -52,5 +52,5 @@ data class LatexArtifact @JvmOverloads constructor(
     val quiet: Boolean = true
 
 ) {
-    fun flattenDependencies(): List<File> = listOf(tex, bib).filterNotNull() + imageFiles + dependsOn.flatMap { it.flattenDependencies() }
+    fun flattenDependencies(): List<File> = listOf(tex, bib, aux).filterNotNull() + imageFiles + dependsOn.flatMap { it.flattenDependencies() }
 }
