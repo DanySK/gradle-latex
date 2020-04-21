@@ -42,10 +42,9 @@ env:
     - OFFICIAL_REPO_SLUG="DanySK/gradle-latex"
   matrix:
     - *reference_jdk
-#    - JDK="adopt-openj9@1.8"
-#    - JDK="adopt@1.11"
-#    - JDK="adopt-openj9@1.11"
-#    - JDK="adopt@1.12"
+    - JDK="adopt-openj9@1.8"
+    - JDK="adopt@"
+    - JDK="adopt-openj9@"
 jobs:
   exclude:
     - os: *reference_os
