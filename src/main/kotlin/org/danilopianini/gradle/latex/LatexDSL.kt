@@ -4,12 +4,6 @@ import org.gradle.api.Project
 import java.io.File
 
 data class LatexDSL(private val project: Project, val name: String) {
-    var bib: String? = with(project) {
-        file(fromName("bib"))
-            .takeIf { it.exists() }
-            ?.absolutePath
-    }
-    var dependsOn: Iterable<LatexArtifact> = emptyList()
     var images: Iterable<File> = emptyList()
     var extraArguments: Iterable<String> = listOf(
         "-shell-escape",
