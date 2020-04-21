@@ -1,0 +1,13 @@
+tests:
+  - description: "A project whose folder has spaces should build"
+    configuration:
+      tasks: [ buildLatex ]
+      options: [] # [ --stacktrace, --debug ]
+    expectation:
+      file_exists: [ "la te x.pdf" ]
+      success:
+        - buildLatex
+        - "pdfLatex.la te x"
+        - "bibtex.la te x"
+        - "pdfLatexAfterBibtex.la te x"
+      failure:
