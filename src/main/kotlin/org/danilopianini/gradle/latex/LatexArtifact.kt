@@ -1,6 +1,5 @@
 package org.danilopianini.gradle.latex
 
-import org.gradle.api.file.FileCollection
 import java.io.File
 import java.io.Serializable
 
@@ -13,7 +12,7 @@ data class LatexArtifact @JvmOverloads constructor(
     val name: String,
 
     /**
-     * Represents tex file which is used to call bibtex, pdflatex
+     * Represents tex file which is used to call pdflatex.
      * Must be set.
      */
     val tex: File,
@@ -53,5 +52,8 @@ data class LatexArtifact @JvmOverloads constructor(
     val quiet: Boolean = true
 
 ) : Serializable {
-    fun flattenDependencies(): List<File> = listOf(tex, bib, aux).filterNotNull() + imageFiles + dependsOn.flatMap { it.flattenDependencies() }
+    fun flattenDependencies(): List<File> =
+        listOfNotNull(tex, bib, aux) +
+        imageFiles +
+        dependsOn.flatMap { it.flattenDependencies() }
 }
