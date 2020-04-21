@@ -57,25 +57,12 @@ latex {
     pdfLatexCommand.set("pdflatex")
     bibTexCommand.set("bibtex")
     "myMainLatexFile" {
-        dependsOn = emptyList<LatexArtifact>()
+        // Options for pdflatex
         extraArguments = listOf("-shell-escape", "-synctex=1", "-interaction=nonstopmode", "-halt-on-error")
+        // File types whose change should trigger a build in case gradle is used with -t flag
+        trackedExtensions = listOf("bib", "eps", "jpeg", "jpg", "pdf", "png", "svg", "tex")
     }
-}
-```
-
-#### Building multiple projects in order
-
-The `dependsOn` option can be used to specify dependencies among latex tasks.
-In the following example, project1 and project2 can get built in parallel,
-while project3 build can start only after both the former completed successfully.
-
-```kotlin
-latex {
-    val project1 = "project1"()
-    val project2 = "project2"()
-    "project3" {
-        dependsOn = setOf(project1, project2)
-    }
+    "anotherMainLatexFile"()
 }
 ```
 
