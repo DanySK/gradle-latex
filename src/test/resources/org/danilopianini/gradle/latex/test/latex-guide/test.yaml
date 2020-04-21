@@ -8,4 +8,6 @@ tests:
       success:
         - buildLatex
         - pdfLatex.latex
+        - bibtex.latex
+        - pdfLatexAfterBibtex.latex
       failure:

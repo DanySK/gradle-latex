@@ -44,12 +44,13 @@ open class LatexExtension @JvmOverloads constructor(
                 LatexArtifact(
                     this,
                     tex = project.file(with(builder.name) { if (endsWith(".tex")) this else "$this.tex" }),
-                    bib = builder.bib?.let { project.file(it) }?.takeIf { it.exists() },
                     pdf = builder.fileFromName("pdf"),
                     aux = builder.fileFromName("aux"),
-                    dependsOn = builder.dependsOn,
+                    bbl = builder.fileFromName("bbl"),
                     imageFiles = builder.images,
-                    extraArgs = builder.extraArguments
+                    extraArgs = builder.extraArguments,
+                    trackedExtensions = builder.trackedExtensions,
+                    diffs = emptyList()
                 )
             }
             .also { artifact ->
@@ -61,14 +62,16 @@ open class LatexExtension @JvmOverloads constructor(
                 runAll.dependsOn(completionTask)
                 // pdflatex, first run
                 val pdfLatexTask by project.tasks.register<PdfLatexTask>("pdfLatex.$this", artifact)
-                pdfLatexTask.dependsOn(artifact.dependsOn.map { project.task(buildName) })
                 completionTask.dependsOn(pdfLatexTask)
-                if (artifact.bib != null) {
-                    val bibTexTask by project.tasks.register<BibtexTask>("bibtex.$this", artifact)
-                    bibTexTask.dependsOn(pdfLatexTask)
-                    val pdfLatexPass2 by project.tasks.register<PdfLatexTask>("pdfLatexAfterBibtex.$this", artifact)
-                    pdfLatexPass2.dependsOn(bibTexTask)
-                    completionTask.dependsOn(pdfLatexPass2)
-                }
+                // bibtex
+                val bibTexTask by project.tasks.register<BibtexTask>("bibtex.$this", artifact)
+                bibTexTask.dependsOn(pdfLatexTask)
+                // pdflatex, second run
+                val pdfLatexPass2 by project.tasks.register<PdfLatexSecondPassTask>(
+                    "pdfLatexAfterBibtex.$this",
+                    artifact
+                )
+                pdfLatexPass2.dependsOn(bibTexTask)
+                completionTask.dependsOn(pdfLatexPass2)
             }
 }

@@ -8,13 +8,13 @@ plugins {
     `java`
     `maven-publish`
     `signing`
-    id("org.danilopianini.git-sensitive-semantic-versioning") version Versions.org_danilopianini_git_sensitive_semantic_versioning_gradle_plugin
-    id("de.fayard.buildSrcVersions") version Versions.de_fayard_buildsrcversions_gradle_plugin
-    kotlin("jvm") version Versions.org_jetbrains_kotlin_jvm_gradle_plugin
-    id("com.gradle.plugin-publish") version Versions.com_gradle_plugin_publish_gradle_plugin
-    id ("org.danilopianini.publish-on-central") version Versions.org_danilopianini_publish_on_central_gradle_plugin
-    id("org.jetbrains.dokka") version Versions.org_jetbrains_dokka
-    id("com.gradle.build-scan") version Versions.com_gradle_build_scan_gradle_plugin
+    id("org.danilopianini.git-sensitive-semantic-versioning")
+    kotlin("jvm")
+    id("com.gradle.plugin-publish")
+    id("org.danilopianini.publish-on-central")
+    id("org.jetbrains.dokka")
+    id("io.gitlab.arturbosch.detekt")
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 gitSemVer {
@@ -30,21 +30,26 @@ val pluginImplementationClass = "org.danilopianini.gradle.latex.Latex"
 
 repositories {
     mavenCentral()
+    maven {
+        url = uri("https://dl.bintray.com/kotlin/kotlinx.html/")
+        content {
+            includeGroup("org.jetbrains.kotlinx")
+        }
+    }
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
+    implementation(kotlin("stdlib-jdk8"))
     implementation(gradleApi())
     implementation(gradleKotlinDsl())
     testImplementation(gradleTestKit())
-    testImplementation(Libs.classgraph)
-    testImplementation(Libs.konf_core)
-    testImplementation(Libs.konf_yaml)
-    testImplementation(Libs.kotlintest_runner_junit5)
+    testImplementation("io.github.classgraph:classgraph:_")
+    testImplementation("com.uchuhimo:konf-yaml:_")
+    testImplementation("io.kotlintest:kotlintest-runner-junit5:_")
 }
 
-configure<JavaPluginConvention> {
-    sourceCompatibility = JavaVersion.VERSION_1_6
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 }
 
 tasks.withType<DokkaTask> {
@@ -78,8 +83,16 @@ tasks {
             file("$outputDir/plugin-classpath.txt").writeText(sourceSets.main.get().runtimeClasspath.joinToString("\n"))
         }
     }
-    withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "1.6"
+}
+
+detekt {
+    failFast = true
+    buildUponDefaultConfig = true
+    config = files("$projectDir/config/detekt.yml")
+    reports {
+        html.enabled = true // observe findings in your browser with structure and code snippets
+        xml.enabled = true // checkstyle like format mainly for integrations like Jenkins
+        txt.enabled = true // similar to the console output, contains issue signature to manually edit baseline files
     }
 }
 
@@ -90,7 +103,7 @@ dependencies {
 
 publishing {
     publications {
-        withType<MavenPublication>() {
+        withType<MavenPublication> {
             pom {
                 developers {
                     developer {
@@ -126,9 +139,4 @@ if (System.getenv("CI") == true.toString()) {
         val signingPassword: String? by project
         useInMemoryPgpKeys(signingKey, signingPassword)
     }
-}
-
-buildScan {
-    termsOfServiceUrl = "https://gradle.com/terms-of-service"
-    termsOfServiceAgree = "yes"
 }

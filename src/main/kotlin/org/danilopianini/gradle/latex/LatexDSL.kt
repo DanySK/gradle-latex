@@ -17,6 +17,9 @@ data class LatexDSL(private val project: Project, val name: String) {
         "-interaction=nonstopmode",
         "-halt-on-error"
     )
+    var trackedExtensions: Iterable<String> = listOf(
+        "bib", "eps", "jpeg", "jpg", "pdf", "png", "svg", "tex"
+    )
     private fun fromName(extension: String) = when {
         name.endsWith(".tex") -> name.substring(0, endIndex = name.length - 4) + ".$extension"
         else -> "$name.$extension"

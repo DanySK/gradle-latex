@@ -51,7 +51,6 @@ The following examples shows the available options and their default values.
 
 ```kotlin
 latex {
-    quiet.set(true)
     terminalEmulator.set("bash") // Your terminal
     waitTime.set(1) // How long before considering a process stalled
     waitUnit.set(TimeUnit.MINUTES) // Time unit for the number above
@@ -60,7 +59,6 @@ latex {
     "myMainLatexFile" {
         dependsOn = emptyList<LatexArtifact>()
         extraArguments = listOf("-shell-escape", "-synctex=1", "-interaction=nonstopmode", "-halt-on-error")
-        quiet = null // Inherits global setting
     }
 }
 ```

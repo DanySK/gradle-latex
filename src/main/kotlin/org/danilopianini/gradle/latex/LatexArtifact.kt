@@ -8,52 +8,29 @@ import java.io.Serializable
  * Used to maintain a graph of dependencies.
  *
  */
-data class LatexArtifact @JvmOverloads constructor(
+data class LatexArtifact(
     val name: String,
-
     /**
      * Represents tex file which is used to call pdflatex.
      * Must be set.
      */
     val tex: File,
-
     val aux: File,
-
     val pdf: File,
-
-    /**
-     * Represents bib file used to call bibtex.
-     */
-    val bib: File? = null,
-
-    /**
-     * Collection of dependencies which have to be compiled
-     * in order for this one to work (e.g. used with \input).
-     */
-    val dependsOn: Iterable<LatexArtifact> = emptyList(),
-
+    val bbl: File,
     /**
      * Collection of image files or directories with images
      * which have to be transformed because LaTeX cannot use them directly (e.g. svg, emf).
      * These are transformed to PDFs which then can be included in pdflatex.
      */
-    val imageFiles: Iterable<File> = emptyList(),
-
+    val imageFiles: Iterable<File>,
     /**
      * Extra arguments to be passed to pdflatex when building this artifact.
      */
-    val extraArgs: Iterable<String> = listOf(),
-
+    val extraArgs: Iterable<String>,
     /**
      * Differential documents to get produced.
      */
-    val diffs: Iterable<Int> = emptyList(),
-
-    val quiet: Boolean = true
-
-) : Serializable {
-    fun flattenDependencies(): List<File> =
-        listOfNotNull(tex, bib, aux) +
-        imageFiles +
-        dependsOn.flatMap { it.flattenDependencies() }
-}
+    val diffs: Iterable<Int>,
+    val trackedExtensions: Iterable<String>
+) : Serializable

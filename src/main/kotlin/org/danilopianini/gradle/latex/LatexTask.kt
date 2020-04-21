@@ -2,12 +2,9 @@ package org.danilopianini.gradle.latex
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.GradleException
-import org.gradle.api.file.FileCollection
 import org.gradle.api.logging.LogLevel
 import org.gradle.api.tasks.Input
-import org.gradle.api.tasks.InputFiles
 import org.gradle.api.tasks.Internal
-import org.gradle.api.tasks.OutputFile
 import org.gradle.kotlin.dsl.get
 import java.io.File
 import java.io.PrintWriter
@@ -26,24 +23,6 @@ abstract class LatexTask @Inject constructor(@Input protected val artifact: Late
         logging.captureStandardError(LogLevel.ERROR)
         logging.captureStandardOutput(LogLevel.ERROR)
     }
-    /**
-     * Collection of all files whose change should trigger this task.
-     * Collected for Gradle's continuous build feature.
-     * Contains the following (based on the Latex artifact):
-     * - main TeX file
-     * - bib file, if there is one
-     * - outputs (PDF) of dependent TeX files
-     * - auxiliary files/folders
-     */
-    @InputFiles
-    open val inputFiles: FileCollection = project.files(*artifact.flattenDependencies().toTypedArray())
-
-    /**
-     * Output of current task. Not used by task itself.
-     * Set for Gradle's continuous build feature.
-     */
-    @OutputFile
-    open val pdf = artifact.pdf
 
     fun String.runScript(
         terminalEmulator: String = extension.terminalEmulator.get(),
