@@ -1,6 +1,8 @@
 package org.danilopianini.gradle.latex
 
+import org.gradle.api.tasks.Console
 import org.gradle.api.tasks.TaskAction
+import javax.inject.Inject
 
 /**
  * Gradle task to run pdflatex on a TeX file.
@@ -8,8 +10,9 @@ import org.gradle.api.tasks.TaskAction
  * 
  * @author csabasulyok
  */
-open class PdfLatexTask : LatexTask() {
+open class PdfLatexTask @Inject constructor(artifact: LatexArtifact) : LatexTask(artifact) {
 
+  @Console
   override fun getDescription() =  "Uses pdflatex to compile ${artifact.tex} into ${artifact.pdf}"
 
   /**

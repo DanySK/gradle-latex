@@ -2,6 +2,7 @@ package org.danilopianini.gradle.latex
 
 import org.gradle.api.file.FileCollection
 import java.io.File
+import java.io.Serializable
 
 /**
  * Represents a TeX artifact which will can be compiled into a PDF.
@@ -51,6 +52,6 @@ data class LatexArtifact @JvmOverloads constructor(
 
     val quiet: Boolean = true
 
-) {
+) : Serializable {
     fun flattenDependencies(): List<File> = listOf(tex, bib, aux).filterNotNull() + imageFiles + dependsOn.flatMap { it.flattenDependencies() }
 }

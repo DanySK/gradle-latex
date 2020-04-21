@@ -1,7 +1,6 @@
 package org.danilopianini.gradle.latex
 
 import org.gradle.api.Project
-import org.gradle.internal.file.DefaultFileMetadata.file
 import java.io.File
 
 data class LatexArtifactBuilder(private val project: Project, val name: String) {

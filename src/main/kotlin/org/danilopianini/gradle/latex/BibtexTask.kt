@@ -2,19 +2,19 @@ package org.danilopianini.gradle.latex
 
 import org.gradle.api.GradleException
 import org.gradle.api.file.FileCollection
-import org.gradle.api.tasks.InputFile
-import org.gradle.api.tasks.InputFiles
-import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.*
 import org.gradle.kotlin.dsl.withGroovyBuilder
 import java.io.File
 import java.nio.file.Files
+import javax.inject.Inject
 
-open class BibtexTask : LatexTask() {
+open class BibtexTask @Inject constructor(artifact: LatexArtifact) : LatexTask(artifact) {
 
     @InputFiles
-    override fun inputFiles(): FileCollection = project.files(
+    override val inputFiles: FileCollection = project.files(
         *(listOf(artifact.aux, artifact.tex, artifact.bib).filterNotNull().toTypedArray()))
 
+    @Console
     override fun getDescription() =  "Uses BibTex to compile ${artifact.aux} into ${artifact.name}.bbl"
 
     /**

@@ -3,10 +3,14 @@ package org.danilopianini.gradle.latex
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
 import org.gradle.api.provider.Property
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.Internal
 import org.gradle.kotlin.dsl.getValue
 import org.gradle.kotlin.dsl.provideDelegate
 import org.gradle.kotlin.dsl.register
 import java.util.concurrent.TimeUnit
+import org.gradle.kotlin.dsl.create
+import java.io.Serializable
 
 inline fun <reified T> Project.propertyWithDefault(default: T): Property<T> =
   objects.property(T::class.java).apply { convention(default) }
@@ -22,11 +26,6 @@ inline fun <reified T> Project.propertyWithDefault(noinline default: () -> T): P
 open class LatexExtension @JvmOverloads constructor(
   private val project: Project,
   // val auxDir: Property<File> = project.propertyWithDefault(project.file(".gradle/latex-temp")),
-  /**
-   * Utilities for easy execution.
-   * After adding extension, can be accessed via project.latex.utils
-   */
-  val quiet: Property<Boolean> = project.propertyWithDefault(true),
   val terminalEmulator: Property<String> = project.propertyWithDefault("bash"),
   val waitTime: Property<Long> = project.propertyWithDefault(1),
   val waitUnit: Property<TimeUnit> = project.propertyWithDefault(TimeUnit.MINUTES),
@@ -34,7 +33,7 @@ open class LatexExtension @JvmOverloads constructor(
   val bibTexCommand: Property<String> = project.propertyWithDefault("bibtex"),
   val inkscapeCommand: Property<String> = project.propertyWithDefault("inkscape"),
   val gitLatexdiffCommand: Property<String> = project.propertyWithDefault("git latexdiff")
-) {
+) : Serializable {
 
   val runAll by project.tasks.register<DefaultTask>("buildLatex") {
     group = Latex.TASK_GROUP
@@ -52,32 +51,24 @@ open class LatexExtension @JvmOverloads constructor(
         aux = builder.fileFromName("aux"),
         dependsOn = builder.dependsOn,
         imageFiles = builder.images,
-        extraArgs = builder.extraArguments,
-        quiet = builder.quiet ?: quiet.get()
+        extraArgs = builder.extraArguments
       )
-    }.also {
-      Latex.LOG.debug("Produced {}", it)
-      // create new task and set its properties using the artifact
-      fun LatexArtifact.buildName() = "buildLatex.${name}"
-      val completionTask by project.tasks.register<LatexTask>(it.buildName()) {
-        artifact = it
-        description = "Builds a LaTeX project"
-      }
+    }.also {artifact ->
+      Latex.LOG.debug("Produced {}", artifact)
+      // All compilation tasks of this document
+      val buildName = "buildLatex.${artifact.name}"
+      val completionTask by project.tasks.register<LatexTask>(buildName, artifact)
+      completionTask.description = "Builds LaTeX project ${artifact.name}"
       runAll.dependsOn(completionTask)
-      val pdfLatexTask by project.tasks.register<PdfLatexTask>("pdfLatex.${this}") {
-        artifact = it
-        dependsOn(artifact.dependsOn.map { project.task(it.buildName()) })
-      }
+      // pdflatex, first run
+      val pdfLatexTask by project.tasks.register<PdfLatexTask>("pdfLatex.${this}", artifact)
+      pdfLatexTask.dependsOn(artifact.dependsOn.map { project.task(buildName) })
       completionTask.dependsOn(pdfLatexTask)
-      if (it.bib != null) {
-        val bibTexTask by project.tasks.register<BibtexTask>("bibtex.${this}") {
-          artifact = it
-          dependsOn(pdfLatexTask)
-        }
-        val pdfLatexPass2 by project.tasks.register<PdfLatexTask>("pdfLatexAfterBibtex.${this}") {
-          artifact = it
-          dependsOn(bibTexTask)
-        }
+      if (artifact.bib != null) {
+        val bibTexTask by project.tasks.register<BibtexTask>("bibtex.${this}", artifact)
+        bibTexTask.dependsOn(pdfLatexTask)
+        val pdfLatexPass2 by project.tasks.register<PdfLatexTask>("pdfLatexAfterBibtex.${this}", artifact)
+        pdfLatexPass2.dependsOn(bibTexTask)
         completionTask.dependsOn(pdfLatexPass2)
       }
     }

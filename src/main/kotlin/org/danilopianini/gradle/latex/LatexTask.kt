@@ -4,20 +4,20 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.GradleException
 import org.gradle.api.file.FileCollection
 import org.gradle.api.logging.LogLevel
-import org.gradle.api.tasks.InputFiles
-import org.gradle.api.tasks.OutputFile
+import org.gradle.api.tasks.*
 import org.gradle.kotlin.dsl.get
 import java.io.File
 import java.io.PrintWriter
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 import kotlin.system.exitProcess
 
-abstract class LatexTask : DefaultTask() {
+abstract class LatexTask @Inject constructor(@Input protected val artifact: LatexArtifact) : DefaultTask() {
     /**
      * Latex artifact used to run current task.
      */
-    lateinit var artifact: LatexArtifact
-    val extension: LatexExtension = project.extensions.get(Latex.EXTENSION_NAME) as LatexExtension
+    @Internal
+    protected val extension: LatexExtension = project.extensions.get(Latex.EXTENSION_NAME) as LatexExtension
 
     init {
         group = Latex.TASK_GROUP
@@ -34,14 +34,14 @@ abstract class LatexTask : DefaultTask() {
      * - auxiliary files/folders
      */
     @InputFiles
-    open fun inputFiles(): FileCollection = project.files(*artifact.flattenDependencies().toTypedArray())
+    open val inputFiles: FileCollection = project.files(*artifact.flattenDependencies().toTypedArray())
 
     /**
      * Output of current task. Not used by task itself.
      * Set for Gradle's continuous build feature.
      */
     @OutputFile
-    open fun pdf() = artifact.pdf
+    open val pdf = artifact.pdf
 
     fun String.runScript(
         terminalEmulator: String = extension.terminalEmulator.get(),
