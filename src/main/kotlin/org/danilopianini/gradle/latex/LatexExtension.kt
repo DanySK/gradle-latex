@@ -3,13 +3,10 @@ package org.danilopianini.gradle.latex
 import org.gradle.api.DefaultTask
 import org.gradle.api.Project
 import org.gradle.api.provider.Property
-import org.gradle.api.tasks.Input
-import org.gradle.api.tasks.Internal
 import org.gradle.kotlin.dsl.getValue
 import org.gradle.kotlin.dsl.provideDelegate
 import org.gradle.kotlin.dsl.register
 import java.util.concurrent.TimeUnit
-import org.gradle.kotlin.dsl.create
 import java.io.Serializable
 
 inline fun <reified T> Project.propertyWithDefault(default: T): Property<T> =
@@ -40,7 +37,7 @@ open class LatexExtension @JvmOverloads constructor(
     description = "Run all LaTeX tasks"
   }
 
-  @JvmOverloads operator fun String.invoke(configuration: LatexArtifactBuilder.() -> Unit = { }): LatexArtifact = LatexArtifactBuilder(project, this)
+  @JvmOverloads operator fun String.invoke(configuration: LatexDSL.() -> Unit = { }): LatexArtifact = LatexDSL(project, this)
     .also(configuration)
     .let { builder ->
       LatexArtifact(
