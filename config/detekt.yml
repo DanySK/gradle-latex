@@ -1,0 +1,11 @@
+complexity:
+  LongParameterList:
+    constructorThreshold: 50
+  NestedBlockDepth:
+    threshold: 5
+style:
+  MagicNumber:
+    ignoreNumbers: '-1,0,1,2,3,4,10'
+performance:
+  SpreadOperator:
+    active: false
