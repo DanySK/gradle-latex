@@ -7,7 +7,7 @@ import javax.inject.Inject
 /**
  * Gradle task to run pdflatex on a TeX file.
  * One such task is created for each Latex artifact.
- * 
+ *
  * @author csabasulyok
  */
 open class PdfLatexTask @Inject constructor(artifact: LatexArtifact) : LatexTask(artifact) {
@@ -32,5 +32,4 @@ open class PdfLatexTask @Inject constructor(artifact: LatexArtifact) : LatexTask
     command.runScript()
     command.runScript()
   }
-
 }
