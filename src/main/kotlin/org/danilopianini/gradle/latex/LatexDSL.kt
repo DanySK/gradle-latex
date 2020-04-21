@@ -11,7 +11,12 @@ data class LatexDSL(private val project: Project, val name: String) {
     }
     var dependsOn: Iterable<LatexArtifact> = emptyList()
     var images: Iterable<File> = emptyList()
-    var extraArguments: Iterable<String> = listOf("-shell-escape", "-synctex=1", "-interaction=nonstopmode", "-halt-on-error")
+    var extraArguments: Iterable<String> = listOf(
+        "-shell-escape",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-halt-on-error"
+    )
     private fun fromName(extension: String) = when {
         name.endsWith(".tex") -> name.substring(0, endIndex = name.length - 4) + ".$extension"
         else -> "$name.$extension"
