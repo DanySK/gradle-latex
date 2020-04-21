@@ -4,10 +4,10 @@ import com.uchuhimo.konf.Config
 import com.uchuhimo.konf.ConfigSpec
 import com.uchuhimo.konf.source.yaml
 import io.github.classgraph.ClassGraph
-import io.kotlintest.matchers.file.shouldBeAFile
-import io.kotlintest.matchers.file.shouldExist
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.StringSpec
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.file.shouldExist
+import io.kotest.matchers.file.shouldBeAFile
 import org.gradle.internal.impldep.org.junit.rules.TemporaryFolder
 import org.gradle.testkit.runner.GradleRunner
 import org.gradle.testkit.runner.TaskOutcome

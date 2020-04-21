@@ -45,7 +45,9 @@ dependencies {
     testImplementation(gradleTestKit())
     testImplementation("io.github.classgraph:classgraph:_")
     testImplementation("com.uchuhimo:konf-yaml:_")
-    testImplementation("io.kotlintest:kotlintest-runner-junit5:_")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:_")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:_")
+    testImplementation("io.kotest:kotest-property-jvm:_")
 }
 
 tasks.withType<KotlinCompile> {
