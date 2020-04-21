@@ -13,7 +13,7 @@ import javax.inject.Inject
 open class PdfLatexTask @Inject constructor(artifact: LatexArtifact) : LatexTask(artifact) {
 
   @Console
-  override fun getDescription() =  "Uses pdflatex to compile ${artifact.tex} into ${artifact.pdf}"
+  override fun getDescription() = "Uses pdflatex to compile ${artifact.tex} into ${artifact.pdf}"
 
   /**
    * Main task action.
