@@ -4,13 +4,15 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.GradleException
 import org.gradle.api.file.FileCollection
 import org.gradle.api.logging.LogLevel
-import org.gradle.api.tasks.*
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputFiles
+import org.gradle.api.tasks.Internal
+import org.gradle.api.tasks.OutputFile
 import org.gradle.kotlin.dsl.get
 import java.io.File
 import java.io.PrintWriter
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
-import kotlin.system.exitProcess
 
 abstract class LatexTask @Inject constructor(@Input protected val artifact: LatexArtifact) : DefaultTask() {
     /**
