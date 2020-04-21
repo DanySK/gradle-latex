@@ -71,5 +71,4 @@ abstract class LatexTask @Inject constructor(@Input protected val artifact: Late
         shell.exitValue().takeIf { it != 0 }?.let { whenFails (it, stderr.readText(), stdout.readText()) }
         Latex.LOG.debug("{} completed successfully", this)
     }
-
 }
