@@ -12,24 +12,24 @@ import javax.inject.Inject
  */
 open class PdfLatexTask @Inject constructor(artifact: LatexArtifact) : LatexTask(artifact) {
 
-  @Console
-  override fun getDescription() = "Uses pdflatex to compile ${artifact.tex} into ${artifact.pdf}"
+    @Console
+    override fun getDescription() = "Uses pdflatex to compile ${artifact.tex} into ${artifact.pdf}"
 
-  /**
-   * Main task action.
-   * Empties auxiliary directory.
-   */
-  @TaskAction
-  fun pdfLatex() {
-    Latex.LOG.info("Executing ${extension.pdfLatexCommand.get()} for {}", artifact.tex)
-    val command = StringBuilder(extension.pdfLatexCommand.get())
-      .append(if (artifact.quiet) " -quiet " else " ")
-      .append(artifact.extraArgs.joinToString(" "))
-      .append(' ')
-      .append(artifact.tex.absolutePath)
-      .toString()
-    Latex.LOG.debug("Prepared command {}", command)
-    command.runScript()
-    command.runScript()
-  }
+    /**
+     * Main task action.
+     * Empties auxiliary directory.
+     */
+    @TaskAction
+    fun pdfLatex() {
+        Latex.LOG.info("Executing ${extension.pdfLatexCommand.get()} for {}", artifact.tex)
+        val command = StringBuilder(extension.pdfLatexCommand.get())
+            .append(if (artifact.quiet) " -quiet " else " ")
+            .append(artifact.extraArgs.joinToString(" "))
+            .append(' ')
+            .append(artifact.tex.absolutePath)
+            .toString()
+        Latex.LOG.debug("Prepared command {}", command)
+        command.runScript()
+        command.runScript()
+    }
 }

@@ -80,7 +80,7 @@ abstract class LatexTask @Inject constructor(@Input protected val artifact: Late
             throw GradleException("Process $this stalled and was forcibly terminated due to timeout." +
                     " If the process was not interactive, consider using longer timeouts.")
         }
-        shell.exitValue().takeIf { it != 0 }?.let { whenFails (it, stderr.readText(), stdout.readText()) }
+        shell.exitValue().takeIf { it != 0 }?.let { whenFails(it, stderr.readText(), stdout.readText()) }
         Latex.LOG.debug("{} completed successfully", this)
     }
 }

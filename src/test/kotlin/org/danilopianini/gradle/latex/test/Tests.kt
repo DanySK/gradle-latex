@@ -88,7 +88,7 @@ class LatexTests : StringSpec({
                     task.outcome shouldBe TaskOutcome.SUCCESS
                 }
                 test.expectation.file_exists.forEach {
-                    with (File("${testFolder.root.absolutePath}/$it")) {
+                    with(File("${testFolder.root.absolutePath}/$it")) {
                         shouldExist()
                         shouldBeAFile()
                     }
