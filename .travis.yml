@@ -7,7 +7,6 @@ git:
   depth: false
 os:
   - *reference_os
-dist: bionic
 addons:
   apt:
     update: true
