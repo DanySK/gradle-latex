@@ -27,13 +27,15 @@ open class PdfLatexTask @Inject constructor(artifact: LatexArtifact) : LatexTask
      * - auxiliary files/folders
      */
     open val inputFiles: FileCollection
-        @InputFiles get() = project.fileTree(project.rootDir).filter { it.extension in artifact.trackedExtensions }
+        @InputFiles get() = project.fileTree(project.rootDir)
+            .filter { it.extension in artifact.trackedExtensions && it !in outputFiles }
 
     /**
      * Output of current task. Not used by task itself.
      * Set for Gradle's continuous build feature.
      */
-    open val outputFiles @InputFiles get() = project.files(artifact.pdf, artifact.aux)
+    @InputFiles
+    open val outputFiles = project.files(artifact.pdf, artifact.aux)
 
     /**
      * Main task action.
