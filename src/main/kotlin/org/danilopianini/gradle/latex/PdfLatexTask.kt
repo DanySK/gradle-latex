@@ -27,9 +27,7 @@ open class PdfLatexTask @Inject constructor(artifact: LatexArtifact) : LatexTask
      * - auxiliary files/folders
      */
     open val inputFiles: FileCollection
-        @InputFiles get() = project.files(
-            project.rootDir.walkTopDown().filter { it.extension in artifact.trackedExtensions }
-        )
+        @InputFiles get() = project.fileTree(project.rootDir).filter { it.extension in artifact.trackedExtensions }
 
     /**
      * Output of current task. Not used by task itself.
