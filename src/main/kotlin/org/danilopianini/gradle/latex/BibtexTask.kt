@@ -1,7 +1,7 @@
 package org.danilopianini.gradle.latex
 
 import org.gradle.api.tasks.Console
-import org.gradle.api.tasks.InputFile
+import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import java.nio.file.Files
@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 open class BibtexTask @Inject constructor(artifact: LatexArtifact) : LatexTask(artifact) {
 
-    val aux @InputFile get() = project.file(artifact.aux)
+    val auxContent @Input get() = artifact.aux.readText()
 
     val bbl @OutputFile get() = project.file(artifact.bbl)
 
