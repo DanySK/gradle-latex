@@ -3,6 +3,7 @@ package org.danilopianini.gradle.latex
 import org.gradle.api.file.FileCollection
 import org.gradle.api.tasks.Console
 import org.gradle.api.tasks.InputFiles
+import org.gradle.api.tasks.OutputFiles
 import org.gradle.api.tasks.TaskAction
 import javax.inject.Inject
 
@@ -34,7 +35,7 @@ open class PdfLatexTask @Inject constructor(artifact: LatexArtifact) : LatexTask
      * Output of current task. Not used by task itself.
      * Set for Gradle's continuous build feature.
      */
-    @InputFiles
+    @OutputFiles
     open val outputFiles = project.files(artifact.pdf, artifact.aux)
 
     /**
