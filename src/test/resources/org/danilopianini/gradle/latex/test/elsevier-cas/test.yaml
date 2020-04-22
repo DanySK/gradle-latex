@@ -2,7 +2,7 @@ tests:
   - description: "Elsevier Latex Template should build"
     configuration:
       tasks: [ buildLatex ]
-      options: [] # [ --stacktrace, --debug ]
+      options: [ ] # [ --stacktrace, --debug ]
     expectation:
       file_exists:
         - cas-dc-template.pdf

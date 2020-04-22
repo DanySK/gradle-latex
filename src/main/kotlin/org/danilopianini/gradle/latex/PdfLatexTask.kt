@@ -28,8 +28,7 @@ open class PdfLatexTask @Inject constructor(artifact: LatexArtifact) : LatexTask
      * - auxiliary files/folders
      */
     open val inputFiles: FileCollection
-        @InputFiles get() = project.fileTree(project.rootDir)
-            .filter { it.extension in artifact.trackedExtensions && it !in outputFiles }
+        @InputFiles get() = project.files(artifact.watching + artifact.tex)
 
     /**
      * Output of current task. Not used by task itself.
@@ -56,7 +55,4 @@ open class PdfLatexTask @Inject constructor(artifact: LatexArtifact) : LatexTask
         command.runScript()
     }
 
-    companion object {
-        val trackedExtensions = listOf("bib", "eps", "jpeg", "jpg", "pdf", "png", "svg", "tex")
-    }
 }

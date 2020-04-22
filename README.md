@@ -59,8 +59,11 @@ latex {
     "myMainLatexFile" {
         // Options for pdflatex
         extraArguments = listOf("-shell-escape", "-synctex=1", "-interaction=nonstopmode", "-halt-on-error")
-        // File types whose change should trigger a build in case gradle is used with -t flag
-        trackedExtensions = listOf("bib", "eps", "jpeg", "jpg", "pdf", "png", "svg", "tex")
+        /*
+         * Additional files and directories whose change should trigger a build in case gradle is used with -t flag.
+         * Can be passed files, strings, or any Object compatible with Gradle's project.files
+         */
+        watching = emptyList()
     }
     "anotherMainLatexFile"()
 }

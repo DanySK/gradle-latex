@@ -49,7 +49,7 @@ open class LatexExtension @JvmOverloads constructor(
                     bbl = builder.fileFromName("bbl"),
                     imageFiles = builder.images,
                     extraArgs = builder.extraArguments,
-                    trackedExtensions = builder.trackedExtensions,
+                    watching = builder.watching,
                     diffs = emptyList()
                 )
             }

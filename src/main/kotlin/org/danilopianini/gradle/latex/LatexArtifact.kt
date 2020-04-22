@@ -1,5 +1,6 @@
 package org.danilopianini.gradle.latex
 
+import org.gradle.api.file.FileCollection
 import java.io.File
 import java.io.Serializable
 
@@ -32,5 +33,5 @@ data class LatexArtifact(
      * Differential documents to get produced.
      */
     val diffs: Iterable<Int>,
-    val trackedExtensions: Iterable<String>
+    val watching: Iterable<Any>
 ) : Serializable
