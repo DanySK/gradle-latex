@@ -1,6 +1,5 @@
 package org.danilopianini.gradle.latex
 
-import org.gradle.api.file.FileCollection
 import java.io.File
 import java.io.Serializable
 

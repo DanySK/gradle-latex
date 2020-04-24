@@ -29,6 +29,7 @@ open class PdfLatexTask @Inject constructor(artifact: LatexArtifact) : LatexTask
      */
     open val inputFiles: FileCollection
         @InputFiles get() = project.files(artifact.watching + artifact.tex)
+            .also { Latex.LOG.debug("task {} is watching for changes {}", name, it) }
 
     /**
      * Output of current task. Not used by task itself.
@@ -54,5 +55,4 @@ open class PdfLatexTask @Inject constructor(artifact: LatexArtifact) : LatexTask
         command.runScript()
         command.runScript()
     }
-
 }
