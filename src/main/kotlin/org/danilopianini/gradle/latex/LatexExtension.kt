@@ -54,7 +54,7 @@ open class LatexExtension @JvmOverloads constructor(
                 )
             }
             .also { artifact ->
-                Latex.LOG.debug("Produced {}", artifact)
+                project.logger.debug("Produced {}", artifact)
                 // All compilation tasks of this document
                 val buildName = "buildLatex.${artifact.name}"
                 val completionTask by project.tasks.register<LatexTask>(buildName, artifact)

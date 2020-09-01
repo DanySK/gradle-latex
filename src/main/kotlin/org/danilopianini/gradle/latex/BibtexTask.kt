@@ -25,11 +25,12 @@ open class BibtexTask @Inject constructor(artifact: LatexArtifact) : LatexTask(a
             if (Files.lines(artifact.aux.toPath()).anyMatch { it.contains("""\citation""") }) {
                 "${extension.bibTexCommand.get()} \"${artifact.aux.name}\"".runScript()
             } else {
-                Latex.LOG.warn("No citation in \"${artifact.aux.absolutePath}\", bibtex not invoked.")
+                project.logger.warn("No citation in \"${artifact.aux.absolutePath}\", bibtex not invoked.")
             }
         } else {
-            Latex.LOG.warn("${artifact.aux.absolutePath} does not exist," +
-                    " cannot invoke ${extension.bibTexCommand.get()}")
+            project.logger.warn(
+                "${artifact.aux.absolutePath} does not exist, cannot invoke ${extension.bibTexCommand.get()}"
+            )
         }
     }
 }
