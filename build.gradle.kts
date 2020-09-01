@@ -1,6 +1,5 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
-import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -30,10 +29,14 @@ val pluginImplementationClass = "org.danilopianini.gradle.latex.Latex"
 
 repositories {
     mavenCentral()
-    maven {
-        url = uri("https://dl.bintray.com/kotlin/kotlinx.html/")
+    jcenter {
         content {
-            includeGroup("org.jetbrains.kotlinx")
+            onlyForConfigurations(
+                "detekt",
+                "dokkaJavadocPlugin",
+                "dokkaJavadocRuntime",
+                "dokkaRuntime"
+            )
         }
     }
 }
@@ -54,9 +57,9 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 }
 
-tasks.withType<DokkaTask> {
-    outputDirectory = "$buildDir/javadoc"
-    outputFormat = "javadoc"
+tasks.javadocJar {
+    from(tasks.dokkaJavadoc.get().outputDirectory)
+    dependsOn(tasks.dokkaJavadoc)
 }
 
 publishOnCentral {
