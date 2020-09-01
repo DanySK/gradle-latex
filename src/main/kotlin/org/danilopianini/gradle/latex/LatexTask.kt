@@ -30,14 +30,16 @@ abstract class LatexTask @Inject constructor(@Input protected val artifact: Late
         waitTime: Long = extension.waitTime.get(),
         waitUnit: TimeUnit = extension.waitUnit.get(),
         whenFails: (Int, String, String) -> Unit = { exit, stdout, stderr ->
-            throw GradleException("""
-                Process $this terminated with non-zero value $exit.
-                
-                Standard error:
-                $stderr
-                
-                Standard output:
-                $stdout""".trimIndent()
+            throw GradleException(
+                """
+                |Process $this terminated with non-zero value $exit.
+                |
+                |Standard error:
+                |$stderr
+                |
+                |Standard output:
+                |$stdout
+                """.trimMargin()
             )
         }
     ) {
@@ -50,16 +52,20 @@ abstract class LatexTask @Inject constructor(@Input protected val artifact: Late
             .start()
         shell.inputStream.copyTo(System.out)
         PrintWriter(shell.outputStream).use {
-            Latex.LOG.debug("Launching {} in {} from directory {}, waiting up to {} {} for termination.",
-                this, terminalEmulator, from, waitTime, waitUnit)
+            project.logger.debug(
+                "Launching {} in {} from directory {}, waiting up to {} {} for termination.",
+                this, terminalEmulator, from, waitTime, waitUnit
+            )
             it.println("$this \n exit")
         }
         val terminatedNaturally = shell.waitFor(waitTime, waitUnit)
         if (!terminatedNaturally) {
-            throw GradleException("Process $this stalled and was forcibly terminated due to timeout." +
-                    " If the process was not interactive, consider using longer timeouts.")
+            throw GradleException(
+                "Process $this stalled and was forcibly terminated due to timeout." +
+                    " If the process was not interactive, consider using longer timeouts."
+            )
         }
         shell.exitValue().takeIf { it != 0 }?.let { whenFails(it, stderr.readText(), stdout.readText()) }
-        Latex.LOG.debug("{} completed successfully", this)
+        project.logger.debug("{} completed successfully", this)
     }
 }

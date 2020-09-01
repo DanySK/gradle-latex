@@ -29,7 +29,7 @@ open class PdfLatexTask @Inject constructor(artifact: LatexArtifact) : LatexTask
      */
     open val inputFiles: FileCollection
         @InputFiles get() = project.files(artifact.watching + artifact.tex)
-            .also { Latex.LOG.debug("task {} is watching for changes {}", name, it) }
+            .also { project.logger.debug("task {} is watching for changes {}", name, it) }
 
     /**
      * Output of current task. Not used by task itself.
@@ -44,14 +44,14 @@ open class PdfLatexTask @Inject constructor(artifact: LatexArtifact) : LatexTask
      */
     @TaskAction
     fun pdfLatex() {
-        Latex.LOG.info("Executing ${extension.pdfLatexCommand.get()} for {}", artifact.tex)
+        project.logger.info("Executing ${extension.pdfLatexCommand.get()} for {}", artifact.tex)
         val command = StringBuilder(extension.pdfLatexCommand.get())
             .append(artifact.extraArgs.joinToString(separator = " ", prefix = " "))
             .append(" \"")
             .append(artifact.tex.absolutePath)
             .append('\"')
             .toString()
-        Latex.LOG.debug("Prepared command {}", command)
+        project.logger.debug("Prepared command {}", command)
         command.runScript()
         command.runScript()
     }
