@@ -42,7 +42,7 @@ open class LatexExtension @JvmOverloads constructor(
             .also(configuration)
             .let { builder ->
                 LatexArtifact(
-                    this,
+                    this.replaceAll("""[\/\\:<>"?\*| ]""".toRegex(), "-"),
                     tex = project.file(with(builder.name) { if (endsWith(".tex")) this else "$this.tex" }),
                     pdf = builder.fileFromName("pdf"),
                     aux = builder.fileFromName("aux"),
