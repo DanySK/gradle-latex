@@ -3,13 +3,12 @@ if: repo != head_repo
 
 reference_jdk: &reference_jdk
   'JDK="adopt@1.8"'
-reference_os: &reference_os
-  'linux'
 language: bash
 git:
   depth: false
 os:
   - *reference_os
+dist: focal
 addons:
   apt:
     update: true
