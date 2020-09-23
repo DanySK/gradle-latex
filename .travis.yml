@@ -6,8 +6,7 @@ reference_jdk: &reference_jdk
 language: bash
 git:
   depth: false
-os:
-  - *reference_os
+os: linux
 dist: focal
 addons:
   apt:
