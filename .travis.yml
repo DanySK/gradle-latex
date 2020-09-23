@@ -22,6 +22,7 @@ addons:
       - texlive-extra-utils
       - texlive-generic-recommended
       - texlive-latex-extra
+      - texlive-lang-italian
       - texlive-latex-recommended
       - texlive-fonts-recommended
       - texlive-science
