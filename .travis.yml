@@ -16,6 +16,7 @@ addons:
       - cm-super
       # For Minted
       - python-pygments
+      - python3-pygments
       # LaTeX
       - texlive
       - texlive-fonts-extra
