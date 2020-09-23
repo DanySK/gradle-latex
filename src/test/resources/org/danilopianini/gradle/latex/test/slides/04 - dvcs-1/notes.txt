@@ -1,0 +1,13 @@
+Macro-argomenti lezione:
+- Imparare a scrivere e generare la documentazione di programmi Java
+- Costruzione di classi sfruttando l'ereditarietà
+-- Estensione base di classi
+-- Estensione ed uso di classi astratte
+
+Aspetti positivi:
+- Il caso di studio basato sui robot ha funzionato molto bene, lo riproporrei anche per i prossimi anni
+- Usare l'UML paga. In molti lo hanno usato come base per capire l'architettura degli esercizi proposti
+
+Aspetti migliorabili:
+- Si potrebbe aggiungere un primo esercizio base di estensione di classi esistenti, giusto per rompere il ghiaccio. In questo modo non ci sarebbe alcun problema legato al prendere familiarità con il caso di studio relativo ai robot (cosa che comunque non ha creato troppi problemi)
+- Possiamo anche fornirgli meno sorgenti commentati di quanto è stato fatto

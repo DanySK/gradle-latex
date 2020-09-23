@@ -1,0 +1,24 @@
+tests:
+  - description: "The OOP Slides should build"
+    configuration:
+      tasks: [ buildLatex ]
+      options: [] # [ --stacktrace, --debug ]
+    expectation:
+      file_exists:
+        - "00 - intro/00-intro.pdf"
+        - "03 - eclipse/03-eclipse.pdf"
+      success:
+        - buildLatex
+        - buildLatex.01 - java-basic-tools-01-basic-tools.tex
+        - buildLatex.03 - eclipse-03-eclipse.tex
+        - buildLatex.04 - dvcs-1-04-git-intro.tex
+        - buildLatex.05 - dvcs-2-05-branching-merging.tex
+        - buildLatex.06 - dvcs-testing-06-DVCS3-junit.tex
+        - buildLatex.06 - dvcs-testing-06-DVCS3-junit.tex
+        - buildLatex.07 - javadoc-jar-07-JAR-Javadoc.tex
+        - buildLatex.08 - code-quality-multiplatform-profiling-08-code-analysis.tex
+        - buildLatex.09 - dvcs-workflow-09-DVCS-Workflow.tex
+        - buildLatex.10 - javafx-10-JavaFX.tex
+        - bibtex.10 - javafx-10-JavaFX.tex
+        - pdfLatexAfterBibtex.10 - javafx-10-JavaFX.tex
+      failure:

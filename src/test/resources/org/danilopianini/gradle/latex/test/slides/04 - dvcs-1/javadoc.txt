@@ -1,0 +1,27 @@
+javadoc -doclet org.jboss.apiviz.APIviz -docletpath "D:\Dottorato\Corsi\OOP 2013\oop2013-lab\OOP1314-LAB\lib\apiviz-1.3.2.GA.jar" -sourceclasspath bin oop1314 -sourcepath src -d doc
+
+javadoc -d doc -sourcepath src -subpackages oop1314 -doclet org.jboss.apiviz.APIviz -docletpath "D:\Dottorato\Corsi\OOP 2013\oop2013-lab\OOP1314-LAB\lib\apiviz-1.3.2.GA.jar" -J-Dgraphviz.home=C:\Program Files\Graphviz2.34 -sourceclasspath bin
+
+
+
+
+
+
+
+javadoc -doclet org.jboss.apiviz.APIviz -docletpath "D:\Dottorato\Corsi\OOP 2013\oop2013-lab\OOP1314-LAB\lib\apiviz-1.3.2.GA.jar" -sourceclasspath bin oop1314 -sourcepath src -d doc
+
+
+-J-Dgraphviz.home="C:\Program Files\Graphviz2.34\bin"
+-version -author -d "D:\Dottorato\Corsi\OOP 2013\oop2013-lab\OOP1314-LAB\doc" -sourceclasspath "D:\Dottorato\Corsi\OOP 2013\oop2013-lab\OOP1314-LAB\bin" 
+
+
+"C:\Program Files\Java\jdk1.7.0_25\bin\javadoc.exe" -d doc -sourcepath src -subpackages oop1314 -doclet org.jboss.apiviz.APIviz -docletpath "D:\Dottorato\Corsi\OOP 2013\oop2013-lab\OOP1314-LAB\lib\apiviz-1.3.2.GA.jar" -J-Dgraphviz.home="C:\Program Files\Graphviz2.34\bin" -sourceclasspath bin -author -version
+
+
+
+javadoc.exe -d doc -sourcepath src -subpackages oop1314
+
+
+
+
+C:\Program Files\Java\jdk1.7.0_25\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\MiKTeX 2.9\miktex\bin\;C:\Program Files\TortoiseHg\;C:\Program Files\Git\bin;C:\Program Files\Git\libexec\git-core;C:\Program Files\Git\bin;C:\Program Files\Calibre2\;C:\apache-ant-1.9.2\bin;C:\Program Files\Graphviz2.34\bin

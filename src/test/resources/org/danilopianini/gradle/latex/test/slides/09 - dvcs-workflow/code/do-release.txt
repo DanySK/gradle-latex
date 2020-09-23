@@ -1,0 +1,18 @@
+# Make sure that develop contains the version that you want to become the new stable
+# Switch to master
+git checkout master
+
+# Merge the last develop in and share your work
+git merge develop
+git push
+
+# Name your release using a tag and share this information
+git tag -a 0.1.0 -m "New version 0.1.0, that includes this amazing new feature"
+git push --tags
+
+# Integrate the new information onto develop to begin a new development cycle
+git checkout develop
+git merge master
+git push
+
+# Back to regular development!

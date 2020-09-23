@@ -42,7 +42,7 @@ open class LatexExtension @JvmOverloads constructor(
             .also(configuration)
             .let { builder ->
                 LatexArtifact(
-                    this.replaceAll("""[\/\\:<>"?\*| ]""".toRegex(), "-"),
+                    this.replace("""[\/\\:<>"?\*|]""".toRegex(), "-"),
                     tex = project.file(with(builder.name) { if (endsWith(".tex")) this else "$this.tex" }),
                     pdf = builder.fileFromName("pdf"),
                     aux = builder.fileFromName("aux"),
@@ -61,14 +61,14 @@ open class LatexExtension @JvmOverloads constructor(
                 completionTask.description = "Builds LaTeX project ${artifact.name}"
                 runAll.dependsOn(completionTask)
                 // pdflatex, first run
-                val pdfLatexTask by project.tasks.register<PdfLatexTask>("pdfLatex.$this", artifact)
+                val pdfLatexTask by project.tasks.register<PdfLatexTask>("pdfLatex.${artifact.name}", artifact)
                 completionTask.dependsOn(pdfLatexTask)
                 // bibtex
-                val bibTexTask by project.tasks.register<BibtexTask>("bibtex.$this", artifact)
+                val bibTexTask by project.tasks.register<BibtexTask>("bibtex.${artifact.name}", artifact)
                 bibTexTask.dependsOn(pdfLatexTask)
                 // pdflatex, second run
                 val pdfLatexPass2 by project.tasks.register<PdfLatexSecondPassTask>(
-                    "pdfLatexAfterBibtex.$this",
+                    "pdfLatexAfterBibtex.${artifact.name}",
                     artifact
                 )
                 pdfLatexPass2.dependsOn(bibTexTask)

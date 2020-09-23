@@ -1,0 +1,98 @@
+@    changeset:   14:67eeb63ea47a
+|\   tag:         tip
+| |  parent:      12:4232ecf4b69b
+| |  parent:      13:d7e2ad5665ff
+| |  user:        Matteo Casadei <m.casadei@unibo.it>
+| |  date:        Sat Dec 05 09:55:07 2015 +0100
+| |  summary:     Merge stable into default: ready for more development
+| |
+| o  changeset:   13:d7e2ad5665ff
+|/   branch:      stable
+|    user:        Matteo Casadei <m.casadei@unibo.it>
+|    date:        Sat Dec 05 09:53:52 2015 +0100
+|    summary:     Added tag 0.1 for changeset 4232ecf4b69b
+|
+o    changeset:   12:4232ecf4b69b
+|\   tag:         0.1
+| |  parent:      10:6c222dceea81
+| |  parent:      11:faa6a8952dfd
+| |  user:        Matteo Casadei <m.casadei@unibo.it>
+| |  date:        Sat Dec 05 09:53:38 2015 +0100
+| |  summary:     Merge feature/model into default
+| |
+| o  changeset:   11:faa6a8952dfd
+| |  branch:      feature/model
+| |  parent:      3:1b374bac5c71
+| |  user:        Matteo Casadei <m.casadei@unibo.it>
+| |  date:        Sat Dec 05 09:53:17 2015 +0100
+| |  summary:     Finish model implementation
+| |
+o |    changeset:   10:6c222dceea81
+|\ \   parent:      8:0849a0b29b17
+| | |  parent:      9:9976d67fe056
+| | |  user:        Matteo Casadei <m.casadei@unibo.it>
+| | |  date:        Sat Dec 05 09:53:00 2015 +0100
+| | |  summary:     Merge feature/controller into default
+| | |
+| o |  changeset:   9:9976d67fe056
+| | |  branch:      feature/controller
+| | |  parent:      5:1fa0cda2fcd4
+| | |  user:        Matteo Casadei <m.casadei@unibo.it>
+| | |  date:        Sat Dec 05 09:52:04 2015 +0100
+| | |  summary:     Finish controller implementation
+| | |
+o | |    changeset:   8:0849a0b29b17
+|\ \ \   parent:      1:f8788090e0ae
+| | | |  parent:      7:0926a067dbeb
+| | | |  user:        Matteo Casadei <m.casadei@unibo.it>
+| | | |  date:        Sat Dec 05 09:51:48 2015 +0100
+| | | |  summary:     Merge feature/view into default
+| | | |
+| o | |  changeset:   7:0926a067dbeb
+| | | |  branch:      feature/view
+| | | |  user:        Matteo Casadei <m.casadei@unibo.it>
+| | | |  date:        Sat Dec 05 09:51:08 2015 +0100
+| | | |  summary:     Finish view implementation
+| | | |
+| o | |  changeset:   6:cf7c462e409a
+|/ / /   branch:      feature/view
+| | |    parent:      1:f8788090e0ae
+| | |    user:        Matteo Casadei <m.casadei@unibo.it>
+| | |    date:        Sat Dec 05 09:50:34 2015 +0100
+| | |    summary:     Implement my first view
+| | |
+| o |  changeset:   5:1fa0cda2fcd4
+| | |  branch:      feature/controller
+| | |  user:        Matteo Casadei <m.casadei@unibo.it>
+| | |  date:        Sat Dec 05 09:49:20 2015 +0100
+| | |  summary:     Remove unwanted file
+| | |
+| o |  changeset:   4:b527470304bf
+|/ /   branch:      feature/controller
+| |    parent:      1:f8788090e0ae
+| |    user:        Matteo Casadei <m.casadei@unibo.it>
+| |    date:        Sat Dec 05 09:48:59 2015 +0100
+| |    summary:     Add controller implementation
+| |
+| o  changeset:   3:1b374bac5c71
+| |  branch:      feature/model
+| |  user:        Matteo Casadei <m.casadei@unibo.it>
+| |  date:        Sat Dec 05 09:47:46 2015 +0100
+| |  summary:     implement my model
+| |
+| o  changeset:   2:fcff1ba6e4d5
+|/   branch:      feature/model
+|    user:        Matteo Casadei <m.casadei@unibo.it>
+|    date:        Sat Dec 05 09:47:11 2015 +0100
+|    summary:     Add model implementation
+|
+o  changeset:   1:f8788090e0ae
+|  user:        Matteo Casadei <m.casadei@unibo.it>
+|  date:        Sat Dec 05 09:46:05 2015 +0100
+|  summary:     Add interfaces to the project
+|
+o  changeset:   0:83d9fabe5206
+   user:        Matteo Casadei <m.casadei@unibo.it>
+   date:        Sat Dec 05 09:44:22 2015 +0100
+   summary:     add readme to my project
+

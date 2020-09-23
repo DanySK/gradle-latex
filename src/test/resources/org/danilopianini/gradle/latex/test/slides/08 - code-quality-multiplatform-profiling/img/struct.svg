@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="16cm" height="8cm" viewBox="638 248 308 156" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="640" y="260">
+    <tspan x="640" y="260">Project main folder</tspan>
+  </text>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="640" y1="262" x2="640" y2="400"/>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="664" y="276">
+    <tspan x="664" y="276"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="660" y="280">
+    <tspan x="660" y="280">src -- Sorgenti</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="660" y="300">
+    <tspan x="660" y="300">res -- Risorse (icone, file di configurazione...)</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="660" y="320">
+    <tspan x="660" y="320">lib -- Librerie esterne (e.g. file .jar, .so, .dll...)</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="660" y="340">
+    <tspan x="660" y="340">bin -- Binario (con copia delle risorse)</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="660" y="360">
+    <tspan x="660" y="360">doc -- Documentazione</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="660" y="380">
+    <tspan x="660" y="380">README.md</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="732" y="376">
+    <tspan x="732" y="376"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="684" y="376">
+    <tspan x="684" y="376"></tspan>
+  </text>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="660" y1="276" x2="640" y2="276"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="660" y1="296" x2="640" y2="296"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="660" y1="316" x2="640" y2="316"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="660" y1="336" x2="640" y2="336"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="660" y1="356" x2="640" y2="356"/>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="660" y1="376" x2="640" y2="376"/>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="660" y="400">
+    <tspan x="660" y="400">LICENSE</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="731.726" y="395.665">
+    <tspan x="731.726" y="395.665"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="683.726" y="395.665">
+    <tspan x="683.726" y="395.665"></tspan>
+  </text>
+  <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="660" y1="395.6" x2="639.6" y2="395.6"/>
+</svg>

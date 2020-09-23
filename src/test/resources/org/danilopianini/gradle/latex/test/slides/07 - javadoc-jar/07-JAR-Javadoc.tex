@@ -1,0 +1,342 @@
+%\documentclass[12pt,handout]{beamer}
+\documentclass[presentation]{beamer}
+\usepackage{../oop-slides-pianini}
+\setbeamertemplate{bibliography item}[text]
+
+\newcommand{\lab}{Lab07}
+
+\title[{\lab} -- Jar, Javadoc]{JAR e Javadoc}
+
+\date[\today]{\today}
+
+\begin{document}
+	
+\frame[label=coverpage]{\titlepage}
+
+\newcommand{\al}[0]{\textless}
+\newcommand{\ar}[0]{\textgreater}
+\newcommand{\gen}[1]{\al{}#1\ar{}}
+\newcommand{\imgfr}[4]{\fr{#1}{#2
+\begin{center}
+\includegraphics[width=#3\textwidth]{#4}                    
+\end{center}
+}}
+
+%====================
+%Outline
+%====================
+
+\section{Deployment di applicazioni Java}
+\subsection{I JAR file}
+\fr{Deployment di applicazioni Java}{
+  \iz {
+    \item Finora, abbiamo visto che un'applicazione Java è composta di un insieme di classi: noi vorremmo distribuirla come singolo file!
+    \item Normalmente, le applicazioni Java vengono confezionate in file JAR (Java ARchive)
+  }
+  \bl{File JAR} {
+    \iz {
+      \item Un JAR è un archivio (normalmente compresso) che contiene le classi, le risorse (e.g. icone) e un file descrittivo detto ``Manifest''
+      \item Il Manifest viene creato sempre in \texttt{META-INF/MANIFEST.MF}, e contiene informazioni sull'applicazione, ad esempio su quale classe contenga il main del programma
+      \item È possibile associare (a livello di sistema operativo) l'esecuzione del JAR file al comando Java, in modo che l'applicazione si avvii automaticamente ``col doppio click'' (avviando automaticamente\ la classe scritta nel Manifest)
+      \item È possibile utilizzare i file JAR come componenti di altre applicazioni
+    }
+  }
+}
+
+\fr{Il comando \texttt{jar}}{
+	\iz{
+		\item Per creare un file JAR, si può utilizzare direttamente il comando \texttt{jar}
+		\iz{
+			\item Normalmente, tuttavia, ci si avvale del supporto dell'IDE
+			\item O meglio ancora, di strumenti di build automation (Gradle, Maven...)
+			\begin{itemize}
+				\item Non sono parte del corso...
+			\end{itemize}
+		}
+	}
+	\bl{Opzioni importanti del comando \texttt{jar}}{
+	\textbf{\texttt{c}} --- Specifica l'intenzione di creare un JAR file\\
+	\textbf{\texttt{f}} --- Specifica un file di output (se non presente, l'output è rediretto su standard output)\\
+	\textbf{\texttt{m}} --- Specifica l'intenzione di allegare un manifest file personalizzato (se non presente, ne viene creato uno di default, che non specifica alcuna classe da eseguire)
+}
+}
+
+\fr{Esempi d'uso del comando \texttt{jar}}{
+
+\bl{\texttt{jar cf jar-file.jar file1 file2 directory1}}{
+\iz {
+\item Crea un nuovo JAR file di nome \texttt{jar-file.jar} contenente \texttt{file1} \texttt{file2} \texttt{directory1}. Include un Manifest di default.
+}
+}
+
+\bl{\texttt{jar cf jar-file.jar *}}{
+\iz {
+\item Crea un nuovo JAR file di nome \texttt{jar-file.jar} contenente tutti i file e le directory nel path corrente. Include un Manifest di default.
+}
+}
+}
+
+
+\fr{Esecuzione di JAR file tramite command line shell}{
+  \iz {
+    \item \texttt{java} ha un'opzione che consente l'esecuzione di file jar.
+    \item Tale opzione è \texttt{-jar}
+    \item Quando si lancia \texttt{java -jar nomefile.jar}, la Java Virtual Machine automaticamente legge il file Manifest, cerca una descrizione della Main Class da eseguire e tenta di eseguirla.
+  }
+}
+
+\subsection{Generazione di JAR tramite Eclipse}
+\fr {Generazione di file JAR con Eclipse (1/5)} {
+\iz {
+\item L'IDE Eclipse supporta efficacemente l'utente nella generazione di file JAR (eseguibili o per la creazione di librerie).
+}
+\bl{Esercizio}{
+\iz {
+\item Si seguano i passi descritti nelle slide successive per generare un file JAR a partire dai tre packages:
+\iz{
+\item \texttt{it.unibo.oop.jar.packages.pkg1} 
+\item \texttt{it.unibo.oop.jar.packages.pkg2}
+\item \texttt{it.unibo.oop.jar.packages.pkg3}
+}
+}
+}
+}
+
+\fr {Generazione di file JAR con Eclipse (2/5)}{
+\iz{
+\item Click col tasto destro sul progetto $>$ Export...
+\item Nella schermata di export: java $>$ JAR file $>$ Next
+}
+\fg{height=0.8\textheight}{img/exportjar4} 
+}
+
+\fr {Generazione di file JAR con Eclipse (3/5)}{
+\iz{
+\item Espandere l'elenco dei file: verificare \textbf{sempre} che siano selezionate \textbf{tutte e sole} le risorse d'interesse per il JAR file
+}
+\fg{height=0.75\textheight}{img/exportjar6} 
+}
+
+\fr {Generazione di file JAR con Eclipse (4/5)}{
+\iz{
+\item Risulta possibile esportare anche i sorgenti nel file JAR
+\iz{
+\item Utile nel caso si voglia rendere ispezionabile il codice sorgente delle librerie distribuite come file JAR (ad esempio) in fase di debug.
+}
+\item In questo caso, selezionare: \emph{Export Java Source files and resources}
+}
+\fg{height=\textheight}{img/exportjar7} 
+}
+
+\fr {Generazione di file JAR con Eclipse (5/5)}{
+\iz{
+\item Selezionare una directory di destinazione
+\item Fornire un nome (con estensione .jar) al file che sarà generato
+\item Click su Finish
+}
+\fg{height=0.75\textheight}{img/exportjar9} 
+}
+
+%\imgfr{Generazione di file JAR con Eclipse}{Selezionare le risorse da esportare, click destro ed \texttt{Export}}{0.3}{img/exportjar1}
+%\imgfr{Generazione di file JAR con Eclipse}{}{0.6}{img/exportjar2}
+%\imgfr{Generazione di file JAR con Eclipse}{}{0.6}{img/exportjar3}
+%\imgfr{Generazione di file JAR con Eclipse}{}{0.6}{img/exportjar4}
+%\imgfr{Generazione di file JAR con Eclipse}{Espandere l'elenco dei file}{0.4}{img/exportjar5}
+%\imgfr{Generazione di file JAR con Eclipse}{Verificare \textbf{sempre} che siano selezionate \textbf{tutte e sole} le risorse che ci interessano.}{0.5}{img/exportjar6}
+%\imgfr{Generazione di file JAR con Eclipse}{Eventualmente potete esportare anche i sorgenti}{0.5}{img/exportjar7}
+%\imgfr{Generazione di file JAR con Eclipse}{Inserite il nome del file (e selezionate la cartella dove volete creare il JAR)}{0.5}{img/exportjar8}
+%\imgfr{Generazione di file JAR con Eclipse}{Finish}{0.5}{img/exportjar9}
+
+\fr {Verifica del contenuto di un JAR} {
+	\iz{
+		\item Il tool \texttt{jar} distribuito con il JDK consente di verificare il contenuto del file compresso
+	\iz{
+		\item Aprire un terminale
+		\item Digitare \texttt{jar tf myjar.jar} (dove \texttt{myjar.jar} è il nome del file JAR da verificare
+	}
+	}
+}
+
+\subsection{Generazione di JAR eseguibili tramite Eclipse}
+
+\fr {Generazione di file JAR eseguibili con Eclipse (1/3)} {
+	\iz {
+		\item Eclipse consente anche di generare file JAR con un file Manifest ad hoc per mettere in esecuzione il progetto software contenuto nell'archivio.
+		\item Come prerequisito, è necessario che esista in Eclipse una ``Run Configuration'' valida per il progetto.
+		\iz{
+			\item Ad esempio se il progetto sia stato eseguito almeno una volta in Eclipse.
+		}
+	}
+}
+
+\fr {Generazione di file JAR eseguibili con Eclipse (2/3)}{
+\iz{
+\item Clik DX su progetto $>$ Export...
+\item Nella schermata di export: java $>$ Runnable JAR file $>$ Next
+}
+\fg{height=0.8\textheight}{img/exportrunnablejar6} 
+}
+
+\fr {Generazione di file JAR eseguibili con Eclipse (3/3)}{
+\iz{
+\item Selezionare la ``Run configuration'' da utilizzare
+\item Inserire il nome del file (e selezionare il path in cui si desidera crearlo)
+}
+\fg{height=0.8\textheight}{img/exportrunnablejar9} 
+}
+
+\section{Documentazione per il codice Java}
+
+\subsection{Javadoc}
+
+\fr{Documentazione per il Codice Sorgente}{
+  \bl{Il ruolo fondamentale della documentazione}{
+    La documentazione di un progetto software è un aspetto fondamentale
+    \iz{
+      \item Al fine di garantirne la manutenibilità
+        \iz{
+          \item Siamo così sicuri di ricordarci a distanza di settimane del perché abbiamo adottato una certa architettura, scritto una certa classe, una data estensione di una classe, un certo metodo?
+          \item Arriva in azienda un nuovo sviluppatore: come fa a costruirsi il background necessario per lavorare su un progetto software esistente?
+        }
+      \item Al fine di aumentare la comprensione del codice
+        \iz{
+          \item Cosa farà mai il metodo \cil{doStuff()} sviluppato dal collega?
+          \item Ci sono dei metodi che sono disponibili solo per ragioni di compatibilità e che non dovrei più utilizzare?
+        }
+    }
+  }
+                                  
+  \bl{}{
+    Oggi ci concentreremo sulla \alert{Javadoc} che, integrata all'uso di UML, è una delle parti fondamentali di una buona documentazione di un progetto SW
+  }
+}
+
+\fr{Javadoc -- Introduzione}{
+  \bl{Javadoc: che cos'è?}{
+    Tool di supporto per la generazione automatica della documentazione (HTML-based) dei programmi Java, tramite utilizzo di annotazioni \textit{``speciali''} collocate in punti ben precisi dei sorgenti
+  }
+  
+  \bl{Come funziona}{
+    \iz{
+      \item Il tool processa tutti i commenti del tipo \cil{/** ... */}
+      \item Commenti che si trovano in testa a dichiarazione di classi, metodi, etc. vengono inclusi per generare automaticamente la documentazione
+      \item Custom tag consentono di classificare diverse tipologie di informazioni, facilitando la scrittura e la generazione della documentazione
+    }
+  }
+}
+
+\subsection{Principali Tag e Linee Guida}
+
+\fr{Javadoc -- Principali Tag (1/2)}{
+  \iz{ 
+    \item \textcolor{blue}{\cil{@param}}
+      \iz{
+        \item Utilizzabile nei commenti relativi a costruttori/metodi o in classi parametriche
+        \item Descrive un generico parametro di input oppure un tipo generico
+      }
+  }
+  \iz{ 
+    \item \textcolor{blue}{\cil{@return}}
+      \iz{
+        \item Utilizzabile nei commenti relativi ai metodi
+        \item Descrive il valore di ritorno
+      }
+  }
+  \iz{ 
+    \item \textcolor{blue}{\cil{@deprecated}}
+      \iz{
+        \item Utilizzabile nei commenti relativi a classi/costruttori/metodi/campi
+        \item Descrive che quel particolare costruttore/metodo etc. è stato deprecato. E' ancora disponibile per ragioni di compatibilità ma è opportuno non utilizzarlo nello sviluppo di nuove applicazioni
+      }
+  }
+}
+
+\fr{Javadoc -- Principali Tag (2/2)}{
+  \iz{ 
+    \item \textcolor{blue}{\cil{@throws}}
+      \iz{
+        \item Utilizzabile nei commenti relativi a costruttori/metodi che lanciano una eccezione (le vedremo in seguito)
+        \item Descrive l'eccezione e il motivo per cui viene lanciata
+      }
+  }
+  
+  \iz{ 
+    \item \textcolor{blue}{\cil{@link}}
+      \iz{
+        \item Descrive collegamenti ipertestuali (link) a metodi/classi/costanti della stessa classe o anche di classi esterne
+        \item Esempi di utilizzo
+          \iz{
+            \item \texttt{ \{@link package.OtherClass\#someMethod\} }
+            \item \texttt{ \{@link \#someMethodOfSameClass\} }
+            \item \texttt{ \{@link \#someFieldOfSameClass\} }
+          }
+      }
+  }    
+
+  \iz{ 
+    \item \textcolor{blue}{\cil{@author}} ed \textcolor{blue}{\cil{@version}}
+      \iz{
+        \item Utilizzabili nel commento che descrive la classe
+        \item Descrive l'autore/autori della classe, e la sua versione
+        \item \textcolor{red}{Non usateli}. Abbiamo il DVCS per sapere esattamente chi ha fatto 
+cosa, quando, e qual è la versione della classe.
+      }
+  }
+}
+
+\fr{Javadoc -- Linee Guida}{
+  \bl{Cosa commentare e quali tag usare?}{
+    \iz{
+      \item Inserire sempre un commento (anche corto) che descrive il ruolo e il funzionamento generale della classe
+      \item Inserire un commento per tutti i costruttori (parametri e return value inclusi), metodi, e campi con livello di accesso \cil{public} e \cil{protected}
+      \item Non è necessario documentare metodi di cui si fa override, a meno che non vi siano peculiarità non rilevate nella documentazione della superclasse. In questo caso, è sufficiente utilizzare \textcolor{red}{\texttt{\{@inheritDoc\}}} all'interno del commento, e verrà generata Javadoc prendendola dalla superclasse.
+    }
+  }
+  \bl{}{
+    Utilizzare i sorgenti che vi forniamo in lab come linea guida di riferimento
+  }
+}
+
+\subsection{Generazione della Javadoc tramite Eclipse}
+
+\fr{Generazione Javadoc tramite Eclipse (1/2)}{
+\fg{height=0.9\textheight}{img/javadoc1} 
+}
+
+\fr{Generazione Javadoc tramite Eclipse (2/2)}{
+\fg{height=0.8\textheight}{img/javadoc2}
+}
+
+\fr{Javadoc: Esempio di Documentazione Generata}{
+\fg{height=0.8\textheight}{img/javadoc_view}
+}
+
+\section{Preparazione al laboratorio}
+
+\begin{frame}{Modalità di lavoro}
+	\begin{enumerate}
+		\item Nella root del repository c'è un file README.md che descrive le operazioni da svolgere
+		\item Tentare di capire l'esercizio in autonomia
+		\begin{itemize}
+			\item Contattare il docente se qualcosa non è chiaro
+		\end{itemize}
+		\item Risolvere l'esercizio in autonomia
+		\begin{itemize}
+			\item Contattare il docente se si rimane bloccati
+		\end{itemize}
+		\item \textcolor{red}{Utilizzare le funzioni di test presenti nei sorgenti per il testing dell'esercizio}
+		\item Cercare di risolvere autonomamente eventuali piccoli problemi che possono verificarsi durante lo svolgimento degli esercizi
+		\begin{itemize}
+			\item Contattare il docente se, anche dopo aver usato il \textbf{debugger}, non si è riusciti a risalire all'origine del problema
+		\end{itemize}
+		\item \textcolor{red}{Scrivere il Javadoc per l'esercizio svolto} 
+		\item Effettuare almeno un commit ad esercizio completato
+		\begin{itemize}
+			\item Fatene pure quanti ne volete durante l'esercizio stesso
+		\end{itemize}
+		\item \textbf{A esercizio ultimato sottoporre la soluzione al docente}
+		\item Proseguire con l'esercizio seguente
+	\end{enumerate}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,467 @@
+%\documentclass[12pt,handout]{beamer}
+\documentclass[presentation]{beamer}
+\usepackage{../oop-slides-croatti}
+\setbeamertemplate{bibliography item}[text]
+
+\newcommand{\lab}{Lab01}
+
+\title[{\lab} -- Introduzione]{Introduzione al laboratorio}
+
+\date[\today]{\today}
+
+\begin{document}
+
+\frame[label=coverpage]{\titlepage}
+
+\begin{frame}<beamer>
+	\frametitle{Outline}
+	\tableofcontents[]
+\end{frame}
+
+\section{Organizzazione del Laboratorio}
+
+\begin{frame}{Organizzazione del Laboratorio}
+
+\begin{itemize}
+\item Due turni settimanali
+\begin{itemize}
+\item Per esigenze di spazi, per garantire un maggiore supporto ai frequentanti, \dots
+\end{itemize}
+\item Il contenuto della lezione e dell'esecitazione settimanale del laboratorio è il medesimo per entrambi i turni
+\item Eventuali variazioni di turno vanno motivate e concordate con il Prof. Viroli (\texttt{mirko.viroli@unibo.it})
+\end{itemize}
+
+\begin{block}{Primo Turno (cognomi nell'intervallo [A-Gim])}
+\begin{itemize}
+\item Lunedì, 9:00 - 13:00
+\item Lab. 2.2, Campus Cesena
+\end{itemize}
+\end{block}
+
+\begin{block}{Secondo Turno (cognomi nell'intervallo [Gin-Z])}
+\begin{itemize}
+\item Martedì, 13:00 - 17:00
+\item Lab. 2.2, Campus Cesena
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Docenti del Laboratorio}
+
+\begin{block}{Prof. Danilo Pianini -- Responsabile Modulo 1}
+\begin{itemize}
+\item mail: \texttt{danilo.pianini@unibo.it}
+\item ricevimento: Martedì, 17:00 - 18:00
+\end{itemize}
+\end{block}
+
+\begin{block}{Prof. Angelo Croatti -- Responsabile Modulo 2}
+\begin{itemize}
+\item mail: \texttt{a.croatti@unibo.it}
+\item ricevimento: su appuntamento, da concordare via mail
+\end{itemize}
+\end{block}
+
+\begin{block}{Ing. Roberto Casadei -- Tutor Didattico}
+\begin{itemize}
+\item mail: \texttt{roby.casadei@unibo.it}
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\section{Forum e supporto}
+
+\begin{frame}{Il Forum del Corso}
+
+\begin{block}{}
+\begin{itemize}
+\item Il dubbio di uno studente, probabilmente, è anche il dubbio di qualcun'altro (\textbf{condivisione}) 
+\item Anche gli studenti possono rispondere ai post di altri studenti (\textbf{discussione})
+\item Utilizzare frequentemente il forum a supporto dei propri colleghi è valutato positivamente
+\end{itemize}
+\end{block}
+\vfill
+\begin{itemize}
+\item Per chiarimenti, ulteriori delucidazioni e spiegazioni si incoraggia l'uso del \textbf{Forum del Corso}
+\begin{itemize}
+\item link accessibile dal sito del corso (IOL) \texttt{http://bit.ly/oop19-cesena}
+\item da preferire all'email inviata direttamente al/ai docente/i
+\end{itemize}
+\item L'email resta il canale da utilizzare per comunicazioni \textbf{confidenziali}
+\begin{itemize}
+\item con l'accortenzza di mettere sempre in copia tutti i docenti del corso
+\end{itemize}
+\end{itemize}
+
+
+
+\end{frame}
+
+\begin{frame}{Il Laboratorio}
+
+\begin{itemize}
+\item Consente di mettere in pratica quanto visto nelle lezioni in aula
+\begin{itemize}
+\item con il supporto diretto del docente e del tutor
+\end{itemize}
+\item Integra ed espande i contenuti affrontati in aula
+\item Introduce strumenti e metodologie (non affrontati in aula)
+\begin{itemize}
+\item Development Tools, IDE
+\item Metodologie di gestione dei progetti
+\item Librerie a supporto dello sviluppo
+\item \dots
+\end{itemize}
+\end{itemize}
+
+\begin{block}{Organizzazione di ciascun turno di laboratorio}
+\begin{enumerate}
+\item Lezione Frontale (30-60 min)
+\begin{itemize}
+\item Introduce nuovi concetti non visti in aula
+\end{itemize}
+\item Esercitazione
+\begin{itemize}
+\item Un set di esercizi da svolgere in autonomia\dots
+\item \dots con il supporto del docente e del tutor!
+\end{itemize}
+\end{enumerate}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Svolgimento di ciascun esercizio}
+\begin{enumerate}\itemsep20pt
+\item Lettura della consegna
+\begin{itemize}
+\item Chiedere al docente/tutor in caso di dubbi
+\end{itemize}
+\item Svolgimento dell'esercizio
+\begin{itemize}
+\item Chiedere al docente/tutor in caso di dubbi e/o difficoltà
+\end{itemize}
+\item Segnalazione al docente/tutor del avvenuto completamento
+\begin{itemize}
+\item La ``correzione'' è fondamentale per ricevere commenti dal docente/tutor per migliorare la propria soluzione o l'approccio risolutivo
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\section{Contenuti e Obiettivi}
+
+\begin{frame}{Overview sui contenuti}
+
+\begin{enumerate}\itemsep10pt
+\item Tooling Java
+\item Eclipse IDE, debug tools
+\item Controllo di versione
+\item Testing, documentazione, deployment
+\item Qualità del codice
+\item Programmazione multipiattaforma
+\item Profiling tools
+\item JavaFX
+\item C\# IDE e tools
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Obiettivi del Laboratorio}
+\begin{itemize}\itemsep10pt
+\item Acquisire le completenze necessarie per:
+\begin{enumerate}
+ \item diventare ottimi programmatori
+ \item diventare buoni progettisti
+\end{enumerate}
+\item Fondamentale: \textbf{mettersi in gioco e impegnarsi!}
+\begin{itemize}
+\item percorso a difficoltà crescente (codice e consegne in inglese, tool avanzati, \dots)
+\item richiede: attenzione in aula, attenzione e impegno in laboratorio, studio autonomo
+\end{itemize}
+\end{itemize}
+\end{frame}
+  
+%\section{Java Overview}
+%
+%%====================
+%%Architettura a Runtime
+%%====================
+%\fr{Architettura a Runtime}{
+%	\fg{height=0.80\textheight}{img/arch_runtime.png}
+%}
+%
+%
+%
+%
+%%====================
+%%JDK
+%%====================
+%
+%\fr{Java Development Kit (JDK)}{
+%	
+%	\bl{Esistono diverse distribuzioni di Java}{
+%		\begin{description}
+%			\item[JRE] -- Java Runtime Environment: esecuzione di programmi
+%			\item[JDK] -- JRE + tool per lo sviluppo di programmi (e.g. compilatore)
+%			\item[J2EE] -- Java Enterprise Edition: JDK + set esteso di librerie
+%		\end{description}
+%	}
+%	
+%	\bl{Noi faremo riferimento al JDK}{Include il necessario per eseguire applicazioni
+%	Java (JRE), i tool (e molte librerie) per sviluppare applicazioni,
+%	e la relativa  documentazione}
+%	
+%	\bl{I Principali Tool}{
+%		\begin{description}
+%			\item[javac] -- Compilatore Java
+%			\item[java] -- Java virtual machine, per eseguire applicazioni Java
+%			\item[javadoc] -- Per creare automaticamente documentazione in HTML
+%			\item[jar] -- Creazione di archivi compressi (anche eseguibili) contenenti bytecode e risorse
+%		\end{description}
+%	}
+%}
+%
+%\section{Richiamo: il file system}
+%\begin{frame}{Elementi base del file system}
+%  \begin{itemize}
+%    \item I sistemi operativi odierni consentono di memorizzare permanentemente le informazioni su 
+%supporti di memorizzazione di massa (dischi magnetici, dispositivi a stato solido...)
+%    \item Le informazioni su questi supporti sono organizzate in file e cartelle:
+%      \begin{itemize}
+%        \item i file contengono le informazioni
+%        \item le cartelle sono contenitori, all'interno contengono i file ed altre cartelle
+%      \end{itemize}
+%    \item La cartella più esterna, che contiene tutte le altre, è detta root. Essa rappresenta il livello gerarchico più alto del file system
+%      \begin{itemize}
+%        \item In *nix (Linux, MacOS, BSD, Solaris...), vi è una unica radice, ossia \texttt{/}
+%        \item In Windows, c'è una root per file system identificata da una lettera di unità (e.g. 
+%\texttt{C:}, \texttt{D:})
+%      \end{itemize}
+%    \item La stringa che descrive un intero percorso dalla root fino ad un elemento del file system
+%prende il nome di \emph{percorso}, e.g.:
+%    \begin{itemize}
+%        \item \texttt{/home/user/frameworkFS.jar} (percorso Unix)
+%        \item \texttt{C:\textbackslash{}Windows\textbackslash{}win32.dll} (percorso Windows)
+%    \end{itemize}
+%  \end{itemize}
+%\end{frame}
+%
+%\begin{frame}[fragile]{Manipolare il file system}
+%  L'utente può osservare e manipolare il file system:
+%  \begin{itemize}
+%    \item sapere quali file e cartelle contiene una cartella
+%    \item creare nuovi file e cartelle
+%    \item spostare file e cartelle dentro altre cartelle
+%    \item rinominare file e cartelle
+%    \item eliminare file e cartelle
+%  \end{itemize}
+%  Il software che consente di osservare e manipolare il file system prende il nome di \alert{file manager}.
+%  \begin{itemize}
+%    \item Su Windows, esso è ``Esplora risorse'' (\texttt{explorer.exe})
+%    \item Su MacOS, il principale è ``Finder''
+%    \item Su Linux (e Android) ne esistono diversi (Nautilus, Dolphin, Thunar, Astro...)
+%  \end{itemize}
+%\end{frame}
+%
+%
+%
+%
+%\section{Richiamo: Interprete Comandi}
+%\fr{Interprete Comandi}{
+%  \bl{}{
+%    Programma che permette di interagire con il S.O. mediante comandi impartiti in modalità testuale (non grafica), via linea di comando
+%  }
+%% 	\bl{Scripting}{
+%% 		L'interprete comandi può avere un linguaggio associato con cui è possibile scrivere script
+%% %		\iz{
+%% %			\item Utili (principalmente) per automatizzare task di diversa natura
+%% %		}
+%% 	}
+%% 	\bl{Vari tipi di comandi}{
+%% 		\iz{
+%% 			\item Navigazione file system
+%% 			\item Interazione con il file system
+%% 			\item Esecuzione di programmi da riga di comando
+%% 			\item ...
+%% 		}
+%% 	}
+%  \begin{itemize}
+%    \item Nell'antichità (in termini informatici) le interfacce grafiche erano sostanzialmente inesistenti, e l'interazione con i calcolatori avveniva di norma tramite interfaccia testuale
+%    \item Tutt'oggi, le interfacce testuali sono utilizzate:
+%    \begin{itemize}
+%      \item per automatizzare le operazioni
+%      \item per velocizzare le operazioni (scrivere un comando è spesso molto più veloce di andare a fare click col mouse in giro per lo schermo)
+%      \item per fare operazioni complesse con pochi semplici comandi
+%      \item non tutti i software sono dotati di interfaccia grafica
+%      \item alcune opzioni di configurazione del sistema operativo restano accessibili solo via linea di comando
+%      \begin{itemize}
+%        \item (anche su Windows: ad esempio i comandi per associare le estensioni ad un eseguibile)
+%      \end{itemize}
+%    \end{itemize}
+%  \end{itemize}
+%  \bl{}{
+%    Lo vedrete in maniera esaustiva nel corso di Sistemi Operativi...
+%  }
+%}
+%
+%\fr{Sistemi *nix (Linux, MacOS X, FreeBSD, Minix...)}{
+%        \bl{Nei sistemi UNIX esistono vari tipi di interpreti, chiamati shell}{
+%                Alcuni esempi
+%                \iz{
+%                        \item Bourne shell (sh)
+%                                \iz{ \item Prima shell sviluppata per UNIX (1977)}
+%                        \item C-Shell (csh)
+%                                \iz{ \item Sviluppata da Bill Joy per BSD}
+%                        \item Bourne Again Shell (bash)
+%                                \iz{ \item Parte del progetto GNU, è un super set di Bourne shell}
+%                        \item ...
+%                }
+%        }
+%        \bl{Per una panoramica completa delle differenze}{
+%                \textcolor{blue}{\url{http://www.faqs.org/faqs/unix-faq/shell/shell-differences/}}
+%        }
+%}
+%
+%\fr{Sistemi Windows}{
+%  \bl{}{
+%    L'interprete comandi è rappresentato dal programma \texttt{cmd.exe} in \texttt{C:$\backslash$Windows$\backslash$System32$\backslash$cmd.exe}
+%    \iz{
+%      \item Eredita in realtà sintassi e funzionalità della maggior parte dei comandi del vecchio MSDOS
+%      \item Versioni recenti hanno introdotto PowerShell, basato su .NET e C\#
+%      \item Windows 10 ha introdotto il supporto a bash tramite Linux Subsystem for Windows
+%    }
+%  }
+%  \fg{height=0.4\textheight}{img/prompt.png}
+%}
+%
+%\begin{frame}[fragile]{Aprire un terminale in laboratorio}
+%  \begin{itemize}
+%    \item In laboratorio, troverete il terminale (prompt dei comandi) clickando su Start $\Rightarrow$ Programmi $\Rightarrow$ Accessori $\Rightarrow$ Prompt dei comandi
+%    \item Metodo più rapido: Start  $\Rightarrow$ Nella barra di ricerca, digitare \texttt{cmd} $\Rightarrow$ clickare su \texttt{cmd.exe}
+%  \end{itemize}
+%\end{frame}
+%
+%\begin{frame}[fragile]{File system e terminale: cheat sheet}
+%\label{slide:commands}
+%  \begin{center}
+%    \begin{tabular}{| l | c | c |}
+%      \hline
+%      \textbf{Operazione} & \textbf{Comando Unix} & \textbf{Comando Win} \\ \hline
+%      \scriptsize{}Visualizzare la directory corrente & \texttt{pwd} & \texttt{echo \%cd\%}  \\ \hline
+%      \scriptsize{}Eliminare il file \texttt{f} (non va con le cartelle!) & \texttt{rm f} & \texttt{del f} \\ \hline
+%      \scriptsize{}Eliminare la directory \texttt{nd} & \texttt{rm -r nd} & \texttt{rd nd} \\ \hline
+%      \scriptsize{}Contenuto della directory corrente & \texttt{ls -alh} & \texttt{dir} \\ \hline
+%%       \scriptsize{}Avviare un eseguibile di nome \texttt{pippo} & \texttt{./p} & \texttt{.\textbackslash{}p} \\ \hline
+%      \scriptsize{}Cambiare unità disco (passare a D:) & -- & \texttt{D:} \\ \hline
+%      \scriptsize{}Passare alla directory \texttt{nd} & \texttt{cd nd} & \texttt{cd nd} \\ \hline
+%      \scriptsize{}Passare alla directory di livello superiore & \texttt{cd ..} & \texttt{cd..} \\ \hline
+%      \scriptsize{}Spostare (rinominare) un file \texttt{f1} in \texttt{f2} & \texttt{mv f1 f2} & \texttt{move f1 f2} \\ \hline
+%      \scriptsize{}Copiare il file \texttt{f} in \texttt{fc} & \texttt{cp f fc} & \texttt{copy f fc} \\ \hline
+%      \scriptsize{}Creare la directory \texttt{d} & \texttt{mkdir d} & \texttt{md d} \\ \hline
+%    \end{tabular}
+%  \end{center}
+%  Eseguire delle prove ed esser certi di aver compreso come utilizzare ogni comando. Per \emph{cominciare} l'esame, in particolare, dovrete usare il comando \texttt{cd}: siate certi di aver capito cosa fa!
+%\end{frame}
+%
+%\begin{frame}[fragile]{Uso intelligente del terminale}
+%  \begin{block}{Autocompletamento}
+%    \scriptsize{}
+%    Sia *nix che Windows offrono la possibilità di effettuare autocompletamento, ossia chiedere al sistema di provare a completare un comando. Per farlo si utilizza il tasto ``tab'' (quello con due frecce orientate in maniera opposta, sopra il lucchetto).
+%  \end{block}
+%  \begin{block}{Memoria dei comandi precendenti}
+%    \scriptsize{}
+%    Sia *nix che Windows offrono la possibilità di richiamare rapidamente i comandi inviati precedentemente premendo il tasto ``freccia su''. I sistemi *nix supportano anche il lancio di comandi eseguiti in sessioni precedenti (non perde memoria col riavvio del terminale). 
+%  \end{block}
+%  \begin{block}{Interruzione di un programma}
+%    \scriptsize{}
+%    È possibile interrompere forzatamente un programma (ad esempio perché inloopato). Per farlo, sia su Windows che in *nix, si prema ctrl+c.
+%  \end{block}
+%  \begin{block}{Ricerca nella storia dei comandi precedenti}
+%    \scriptsize{}
+%    Premendo ctrl+r seguito da un testo da cercare, i sistemi *nix supportano la ricerca all'interno dei comandi lanciati recentemente, anche in sessioni utente precedenti. Non disponibile su Windows.
+%  \end{block}
+%\end{frame}
+%
+%
+%
+%\section{Preparazione dell'ambiente di lavoro}
+%
+%\fr{Preparazione Ambiente di Lavoro 1/3}{
+%	\iz{
+%		\item Accendere il PC
+%		\item Loggarsi sul sito del corso
+%		\iz{
+%			\item \textcolor{blue}{\url{http://bit.ly/unibooop2018}}
+%		}
+%		\item Scaricare dalla sezione dedicata a questa settimana il materiale dell'esercitazione odierna
+%		\item Spostare il file scaricato sul Desktop
+%		\item Decomprimere il file usando 7zip (o un programma analogo) sul Desktop
+%	}
+%}
+%
+%
+%\fr{Preparazione Ambiente di Lavoro 2/3}{
+%	\iz{
+%		\item Aprire il prompt dei comandi 
+%	}	
+%	\fg{height=0.8\textheight}{img/open_prompt.png}
+%}
+%
+%\fr{Preparazione Ambiente di Lavoro 3/3}{
+%	\iz{
+%		\item Posizionarsi all'interno della cartella scompattata con l'ausilio del comando \texttt{cd} (change directory)
+%		\en{
+%			\item \texttt{cd Desktop} e premere invio, dopodiché
+%			\item \texttt{cd lab01} e premere invio
+%		}
+%	}
+%	\fg{height=0.4\textheight}{img/cd_prompt.png}
+%}
+%
+%\section{Compilazione ed Esecuzione da Riga di Comando}
+%
+%\fr{Compilazione ed Esecuzione, comandi di base}{
+%	\bl{Compilazione}{
+%		Compilazione di una classe (comando \textcolor{blue}{javac})
+%		\iz{
+%			\item \alert{\cil{javac NomeFileSorgente.java}} 
+%			\item \alert{\cil{javac *.java}} compila tutti i sorgenti nella directory corrente
+%		}
+%	}
+%	\bl{Esecuzione}{
+%		Esecuzione di un programma Java (comando \textcolor{blue}{java})
+%		\iz{
+%			\item	\alert{\cil{java NomeDellaClasse}}
+%		}
+%	}
+%	Si noti che il compilatore \emph{traduce} \textbf{file} sorgente in \textbf{file} binari, 
+%mentre \\
+%    L'interprete Java (la Java Virtual Machine) esegue una ed una sola \textbf{classe}.
+%    
+%    Il compilatore Java lavora su \textit{file}, l'interprete Java su \textit{classi}
+%}
+%
+%\fr{Appendice: operazioni coi complessi}{
+%	\bl{Operazioni sui numeri complessi --- Breve ripasso}{
+%		Siano $z,w \in \mathbb{C} : z = a + ib,\ w = c + id$, allora:
+%		\iz {
+%			\item Confronto: $z = w \iff a = c \wedge b = d$
+%			\item Somma algebrica: $z \pm w = a \pm c + i(b \pm d)$
+%			\item Prodotto: $z \cdot w = (a+ib)(c+id) = ac-bd+i(bc+ad)$
+%			\item Rapporto: $\frac{z}{w} = \frac{(a+ib)(c-id)}{(c+id)(c-id)} = \frac{ac + bd}{c^2 + 
+%d^2} + i\frac{bc - ad}{c^2 + 
+%d^2}$
+%		}
+%	}	
+%}
+
+\end{document}
+
+\begin{frame}[allowframebreaks]
+ \frametitle{Bibliography}
+	\bibliographystyle{plain}
+	\small
+ \bibliography{biblio}
+\end{frame}
+

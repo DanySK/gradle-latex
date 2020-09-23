@@ -33,4 +33,10 @@ data class LatexArtifact(
      */
     val diffs: Iterable<Int>,
     val watching: Iterable<Any>
-) : Serializable
+) : Serializable {
+    init {
+        if ("/\\:<>\"?*|".any { it in name }) {
+            throw IllegalStateException("Illegal name $name")
+        }
+    }
+}

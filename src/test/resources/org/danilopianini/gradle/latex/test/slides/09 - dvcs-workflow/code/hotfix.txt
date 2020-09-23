@@ -1,0 +1,13 @@
+hg up stable
+
+# fix severe bug
+
+hg ci -m "fix servere bug"
+
+hg tag 0.1.1
+
+hg up default
+
+hg merge stable
+
+hg ci -m "merge stable into default"    

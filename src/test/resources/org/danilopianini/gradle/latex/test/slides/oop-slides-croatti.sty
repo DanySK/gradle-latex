@@ -1,0 +1,101 @@
+\mode<presentation>{\usetheme{Boadilla}}
+\usecolortheme{beaver}
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{itemize subsubitem}[square]
+\setbeamertemplate{enumerate items}[default]
+%\setbeamercolor{block title}{fg=yellow!50!black}
+%\setbeamercolor{block title}{bg=black!10}
+%\setbeamercolor{block body}{bg=black!5}
+\pgfdeclareimage[height=0.625cm]{unibo-logo}{../unibo.pdf}
+\logo{\pgfuseimage{unibo-logo}}
+
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[active]{srcltx}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{ragged2e}
+\usepackage{cleveref}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=t,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  %deletekeywords={...},            % if you want to delete keywords from the given language
+  %escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=java,                   % the language of the code
+  %morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=4,                       % sets default tabsize to 2 spaces
+  %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  literate={à}{{\`a}}1
+      {è}{{\`e}}1
+      {ò}{{\`o}}1
+      {ì}{{\`i}}1
+      {ù}{{\`u}}1
+}
+
+\author[A. Croatti]{Angelo Croatti \\ Danilo Pianini, Roberto Casadei, Mirko Viroli}
+
+\institute[UNIBO]
+{C.D.S. Ingegneria e Scienze Informatiche \\\textsc{Alma Mater Studiorum}---Università di Bologna, Campus di Cesena}
+
+\subtitle{Programmazione ad Oggetti -- \lab}
+
+\date[\today]{\today}
+
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+\AtBeginSubsection[]
+{
+	\begin{frame}<beamer>
+		\frametitle{Outline}
+		\tableofcontents[currentsection,currentsubsection]
+	\end{frame}
+}
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+\newcommand{\fr}[2]{\begin{frame}\frametitle{#1}#2\end{frame}}
+%\newcommand{\ffr}[2]{\begin{frame}[fragile]\frametitle{#1}#2\end{frame}}
+\newcommand{\bl}[2]{\begin{block}{#1}#2\end{block}}
+\newcommand{\bx}[1]{\vspace{5pt}\begin{beamerboxesrounded}[shadow=true]{}#1\end{beamerboxesrounded}}
+\newcommand{\iz}[1]{\begin{itemize}#1\end{itemize}}
+\newcommand{\en}[1]{\begin{enumerate}#1\end{enumerate}}
+\newcommand{\code}[1]{\lstinputlisting[language=java]{#1}}
+\newcommand{\titledcode}[2]{\vspace{-10pt}\lstinputlisting[title={#1},language=java]{#2}}
+\newcommand{\cil}[1]{\lstinline[language=java,basicstyle=\normalsize\ttfamily]$#1$}
+\newcommand{\Cil}[1]{\lstinline[language=java,basicstyle=\Large\ttfamily]$#1$}
+\newcommand{\sizedcode}[2]{\lstinputlisting[basicstyle=#1\ttfamily]{#2}}
+\newcommand{\fg}[2]{\vspace{-5pt}\begin{center}\includegraphics[#1]{#2}\end{center}}
+\newcommand{\myurl}[1]{{\footnotesize\ttfamily #1}}
+\newcommand{\ssmall}[0]{\fontsize{7pt}{8pt}\selectfont}
+\newcommand{\ditto}{\texttt{\char`\"}}
+
+\addtobeamertemplate{block begin}{}{\justifying}
+\addtobeamertemplate{frame begin}{}{\justifying}

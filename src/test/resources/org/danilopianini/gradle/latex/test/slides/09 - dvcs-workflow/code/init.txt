@@ -1,0 +1,20 @@
+# Create a new work directory
+mkdir myawesomeproject
+cd myawesomeproject
+
+# Initialize your repository
+git init
+
+# Create a README.md file and a .gitignore file
+# Initialize the branch master with them
+git add README.md .gitignore
+git commit -m "Initialize project"
+
+# Configure the remotes and share your project stub
+git remote add origin your_project_url
+git push -u origin master
+
+# Switch to develop, and push the stub
+git checkout -b develop
+git push -u origin develop
+

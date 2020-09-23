@@ -26,7 +26,7 @@ abstract class LatexTask @Inject constructor(@Input protected val artifact: Late
 
     fun String.runScript(
         terminalEmulator: String = extension.terminalEmulator.get(),
-        from: File = project.projectDir,
+        from: File = artifact.tex.parentFile,
         waitTime: Long = extension.waitTime.get(),
         waitUnit: TimeUnit = extension.waitUnit.get(),
         whenFails: (Int, String, String) -> Unit = { exit, stdout, stderr ->
