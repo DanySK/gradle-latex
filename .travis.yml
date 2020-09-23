@@ -18,13 +18,11 @@ addons:
       # For Minted
       - python-pygments
       # LaTeX
-      - texlive-base
-      - texlive-extra-utils
-      - texlive-generic-recommended
-      - texlive-latex-extra
+      - texlive
+      - texlive-fonts-extra
       - texlive-lang-italian
-      - texlive-latex-recommended
-      - texlive-fonts-recommended
+      - texlive-latex-extra
+      - texlive-publishers
       - texlive-science
       # Debug
       - tree
