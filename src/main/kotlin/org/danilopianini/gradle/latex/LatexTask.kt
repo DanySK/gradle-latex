@@ -54,7 +54,11 @@ abstract class LatexTask @Inject constructor(@Input protected val artifact: Late
         PrintWriter(shell.outputStream).use {
             project.logger.debug(
                 "Launching {} in {} from directory {}, waiting up to {} {} for termination.",
-                this, terminalEmulator, from, waitTime, waitUnit
+                this,
+                terminalEmulator,
+                from,
+                waitTime,
+                waitUnit
             )
             it.println("$this \n exit")
         }
