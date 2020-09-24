@@ -48,20 +48,17 @@ env:
     - JDK="adopt-openj9@"
 jobs:
   exclude:
-    - os: *reference_os
-      env: *reference_jdk
+    - env: *reference_jdk
       stage: test
   include:
     - stage: check
       name: "Deep check on reference OS and JDK"
-      os: *reference_os
       env:
         - *reference_jdk
     - stage: deploy
       addons: true
       name: "Reports and deployment"
       if: repo = env(OFFICIAL_REPO_SLUG) AND type != pull_request
-      os: *reference_os
       env:
         # Signing
         - secure: "szQtVBImDhLKV+kR/QkODJNqRte0OvTOIYgCgf/PWCXGHJdm1BR7XBNlVktOScIKLL7y284g8oSYb5WbjulizcTQ460kvxYd1j9PtT8SWKhYPfK8xoRK3KuP0cFIn0JzrorjMS78WFHFxRE+qO8bKIevWeEY0NO9be2JA0wQX/LKsUw3Yv4TSgqSmtwCHqfzVv+t+HXD6K9wx+VONQC8PQLI1rlmV/TeMPr3XPrbtW1NaEgfRz4kKQaxPbyAXzTkWRpcJSUCwnTQ3/rONFZeSu9cXTtbIYwf/6/JOnmEGZjB5dvvAgySkv3OsAPggBsAjGPWCQVF2qdcmlmBRLvOofq6U1lfMM3PPA1FW/dx8KWOuUxgJQ3Q+1FcJvCW+wvxcHna5WW1LD8NHfvqD02SI1Ov7/RkrNfsJEp+zaE23MNziRZUnFsEOaALHwLXlYt+Vi+9qrswbUWseFL1t0ZMA+quoIZXofY1S/SSQFK75eEnpSoXHq6lMt0U0IeL9jUw7rIL94fYdiypgl5tP4Ym1dKE/UGzM+PxWwKEjr9HpKku01QJrGze1Eu3GVlJda0iovh0EH1QZw6rhQFMhvr1l3vMOWkPERABrvwQJhjEdvtRmx4YRQe+3pba4mF/tS6px62UiK0lUWSEZb8uNl58tk/wG8SzkpZt6gZVcEVwrLw="
