@@ -44,58 +44,60 @@ object Root : ConfigSpec("") {
     val tests by required<List<Test>>()
 }
 
-class LatexTests : StringSpec({
-    val pluginClasspathResource = ClassLoader.getSystemClassLoader()
-        .getResource("plugin-classpath.txt")
-        ?: throw IllegalStateException("Did not find plugin classpath resource, run \"testClasses\" build task.")
-    val classpath = pluginClasspathResource.openStream().bufferedReader().use { reader ->
-        reader.readLines().map { File(it) }
-    }
-    val scan = ClassGraph()
-        .enableAllInfo()
-        .acceptPackages("org.danilopianini.gradle.latex.test")
-        .scan()
-    scan.getResourcesWithLeafName("test.yaml")
-        .flatMap {
-            log.debug("Found test list in $it")
-            val yamlFile = File(it.classpathElementFile.absolutePath + "/" + it.path)
-            val testConfiguration = Config {
-                addSpec(Root)
-                addSpec(Test)
-                addSpec(Expectation)
-                addSpec(Configuration)
-            }.from.yaml.inputStream(it.open())
-            testConfiguration[Root.tests].map { it to yamlFile.parentFile }
-        }.forEach { (test, location) ->
-            log.debug("Test to be executed: $test from $location")
-            val testFolder = folder {
-                location.copyRecursively(this.root)
-            }
-            log.debug("Test has been copied into $testFolder and is ready to get executed")
-            test.description {
-                val result = GradleRunner.create()
-                    .withProjectDir(testFolder.root)
-                    .withPluginClasspath(classpath)
-                    .withArguments(test.configuration.tasks + test.configuration.options)
-                    .build()
-                println(result.tasks)
-                println(result.output)
-                test.expectation.success.forEach {
-                    val task = result.task(":$it")
-                    require(task != null) {
-                        "Task $it was not present among the executed tasks"
-                    }
-                    task.outcome shouldBe TaskOutcome.SUCCESS
-                }
-                test.expectation.file_exists.forEach {
-                    with(File("${testFolder.root.absolutePath}/$it")) {
-                        shouldExist()
-                        shouldBeAFile()
-                    }
-                }
-            }
+class LatexTests : StringSpec(
+    {
+        val pluginClasspathResource = ClassLoader.getSystemClassLoader()
+            .getResource("plugin-classpath.txt")
+            ?: throw IllegalStateException("Did not find plugin classpath resource, run \"testClasses\" build task.")
+        val classpath = pluginClasspathResource.openStream().bufferedReader().use { reader ->
+            reader.readLines().map { File(it) }
         }
-}) {
+        val scan = ClassGraph()
+            .enableAllInfo()
+            .acceptPackages("org.danilopianini.gradle.latex.test")
+            .scan()
+        scan.getResourcesWithLeafName("test.yaml")
+            .flatMap {
+                log.debug("Found test list in $it")
+                val yamlFile = File(it.classpathElementFile.absolutePath + "/" + it.path)
+                val testConfiguration = Config {
+                    addSpec(Root)
+                    addSpec(Test)
+                    addSpec(Expectation)
+                    addSpec(Configuration)
+                }.from.yaml.inputStream(it.open())
+                testConfiguration[Root.tests].map { it to yamlFile.parentFile }
+            }.forEach { (test, location) ->
+                log.debug("Test to be executed: $test from $location")
+                val testFolder = folder {
+                    location.copyRecursively(this.root)
+                }
+                log.debug("Test has been copied into $testFolder and is ready to get executed")
+                test.description {
+                    val result = GradleRunner.create()
+                        .withProjectDir(testFolder.root)
+                        .withPluginClasspath(classpath)
+                        .withArguments(test.configuration.tasks + test.configuration.options)
+                        .build()
+                    println(result.tasks)
+                    println(result.output)
+                    test.expectation.success.forEach {
+                        val task = result.task(":$it")
+                        require(task != null) {
+                            "Task $it was not present among the executed tasks"
+                        }
+                        task.outcome shouldBe TaskOutcome.SUCCESS
+                    }
+                    test.expectation.file_exists.forEach {
+                        with(File("${testFolder.root.absolutePath}/$it")) {
+                            shouldExist()
+                            shouldBeAFile()
+                        }
+                    }
+                }
+            }
+    }
+) {
     companion object {
         val log = LoggerFactory.getLogger(LatexTests::class.java)
     }
