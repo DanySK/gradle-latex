@@ -31,9 +31,9 @@ jobs:
         shell: bash
         run: git checkout "$(echo ${{ github.event.ref }} | sed s#refs/heads/## | sed s#refs/tags##)"
       - name: Update APT
-        run: apt-get -y update
+        run: sudo apt-get -y update
       - name: Install TeXLive
-        run: while read package; do apt-get install -y $package; done < .github/ubuntu-packages
+        run: while read package; do sudo apt-get install -y $package; done < .github/ubuntu-packages
       - name: Check
         shell: bash
         run: |
