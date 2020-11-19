@@ -54,7 +54,10 @@ dependencies {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
+    kotlinOptions {
+        allWarningsAsErrors = true
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 publishOnCentral {
