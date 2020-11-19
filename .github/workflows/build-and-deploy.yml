@@ -54,7 +54,7 @@ jobs:
             exit 1
           fi
       - name: Deploy
-        if: ${{ matrix.os == 'ubuntu' && matrix.jvm_version == 8 }}
+        if: ${{ matrix.jvm_version == 8 }}
         shell: bash
         env:
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_KEY }}
