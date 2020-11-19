@@ -18,9 +18,8 @@ jobs:
   Build:
     strategy:
       matrix:
-        os: [windows, macos, ubuntu]
         jvm_version: [8, 11, 14]
-    runs-on: ${{ matrix.os }}-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/setup-java@v1
         with:
@@ -31,6 +30,10 @@ jobs:
       - name: Checkout
         shell: bash
         run: git checkout "$(echo ${{ github.event.ref }} | sed s#refs/heads/## | sed s#refs/tags##)"
+      - name: Update APT
+        run: apt-get -y update
+      - name: Install TeXLive
+        run: while read package; do apt-get install -y $package; done < .github/ubuntu-packages
       - name: Check
         shell: bash
         run: |
