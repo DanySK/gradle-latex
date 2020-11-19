@@ -53,7 +53,7 @@ class LatexTests : StringSpec({
     }
     val scan = ClassGraph()
         .enableAllInfo()
-        .whitelistPackages("org.danilopianini.gradle.latex.test")
+        .acceptPackages("org.danilopianini.gradle.latex.test")
         .scan()
     scan.getResourcesWithLeafName("test.yaml")
         .flatMap {
