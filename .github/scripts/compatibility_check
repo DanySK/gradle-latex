@@ -1,5 +1,5 @@
 #!/bin/bash
-COMPATIBLE=$([ ! "$OS" = 'windows' ] && echo 'true' || echo 'false')
+COMPATIBLE=$([ "$OS" = 'ubuntu' ] && echo 'true' || echo 'false')
 echo "COMPATIBLE=$COMPATIBLE"
 echo "COMPATIBLE=$COMPATIBLE" >> $GITHUB_ENV
 REFERENCE=$([ "$OS" = 'ubuntu' ] && [ "$JAVA_VERSION" = 8 ] && echo 'true' || echo 'false')
