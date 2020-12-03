@@ -1,0 +1,4 @@
+#!/bin/sh
+while read package; do
+    sudo apt-get install -y $package
+done < .github/texlive-config/ubuntu-packages
