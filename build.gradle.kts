@@ -17,7 +17,7 @@ plugins {
 }
 
 gitSemVer {
-    version = computeGitSemVer()
+    version = computeGitSemVer().replace("+", "-")
 }
 
 group = "org.danilopianini"
