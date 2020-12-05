@@ -61,8 +61,8 @@ tasks.withType<KotlinCompile> {
 }
 
 publishOnCentral {
-    projectDescription.set(projectDetails)
-    projectLongName.set(fullName)
+    projectDescription = projectDetails
+    projectLongName = fullName
 }
 
 tasks {
