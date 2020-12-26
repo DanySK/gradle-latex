@@ -10,6 +10,8 @@ import java.io.File
 import java.io.PrintWriter
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import kotlin.io.path.ExperimentalPathApi
+import kotlin.io.path.createTempFile
 
 abstract class LatexTask @Inject constructor(@Input protected val artifact: LatexArtifact) : DefaultTask() {
     /**
@@ -24,6 +26,7 @@ abstract class LatexTask @Inject constructor(@Input protected val artifact: Late
         logging.captureStandardOutput(LogLevel.ERROR)
     }
 
+    @ExperimentalPathApi
     fun String.runScript(
         terminalEmulator: String = extension.terminalEmulator.get(),
         from: File = artifact.tex.parentFile,
@@ -43,8 +46,8 @@ abstract class LatexTask @Inject constructor(@Input protected val artifact: Late
             )
         }
     ) {
-        val stderr = createTempFile()
-        val stdout = createTempFile()
+        val stderr = createTempFile().toFile()
+        val stdout = createTempFile().toFile()
         val shell = ProcessBuilder(terminalEmulator)
             .directory(from)
             .redirectError(stderr)

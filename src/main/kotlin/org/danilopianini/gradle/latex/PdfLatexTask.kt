@@ -6,6 +6,7 @@ import org.gradle.api.tasks.InputFiles
 import org.gradle.api.tasks.OutputFiles
 import org.gradle.api.tasks.TaskAction
 import javax.inject.Inject
+import kotlin.io.path.ExperimentalPathApi
 
 /**
  * Gradle task to run pdflatex on a TeX file.
@@ -42,6 +43,7 @@ open class PdfLatexTask @Inject constructor(artifact: LatexArtifact) : LatexTask
      * Main task action.
      * Empties auxiliary directory.
      */
+    @ExperimentalPathApi
     @TaskAction
     fun pdfLatex() {
         project.logger.info("Executing ${extension.pdfLatexCommand.get()} for {}", artifact.tex)
