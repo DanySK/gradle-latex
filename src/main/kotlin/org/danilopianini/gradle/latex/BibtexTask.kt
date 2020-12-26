@@ -6,6 +6,7 @@ import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import java.nio.file.Files
 import javax.inject.Inject
+import kotlin.io.path.ExperimentalPathApi
 
 open class BibtexTask @Inject constructor(artifact: LatexArtifact) : LatexTask(artifact) {
 
@@ -19,6 +20,7 @@ open class BibtexTask @Inject constructor(artifact: LatexArtifact) : LatexTask(a
     /**
      * Execute bibtex command for given latex artifact.
      */
+    @ExperimentalPathApi
     @TaskAction
     fun bibTex() {
         if (artifact.aux.exists()) {
