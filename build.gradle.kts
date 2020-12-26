@@ -1,3 +1,4 @@
+import org.danilopianini.gradle.mavencentral.mavenCentral
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -63,6 +64,14 @@ tasks.withType<KotlinCompile> {
 publishOnCentral {
     projectDescription = projectDetails
     projectLongName = fullName
+    repository("https://maven.pkg.github.com/danysk/gradle-latex") {
+        user = "DanySK"
+        password = System.getenv("GITHUB_TOKEN")
+    }
+    repository(mavenCentral().url.replace("://", "://s01.")) {
+        user = mavenCentral().user()
+        password = mavenCentral().password()
+    }
 }
 
 tasks {
