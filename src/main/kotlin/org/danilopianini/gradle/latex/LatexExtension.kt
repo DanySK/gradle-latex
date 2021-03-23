@@ -74,4 +74,8 @@ open class LatexExtension @JvmOverloads constructor(
                 pdfLatexPass2.dependsOn(bibTexTask)
                 completionTask.dependsOn(pdfLatexPass2)
             }
+
+    companion object {
+        const val serialVersionUID = 1L
+    }
 }

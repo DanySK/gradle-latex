@@ -39,4 +39,7 @@ data class LatexArtifact(
             throw IllegalStateException("Illegal name $name")
         }
     }
+    companion object {
+        const val serialVersionUID = 1L
+    }
 }
