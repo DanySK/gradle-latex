@@ -5,9 +5,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     `java-gradle-plugin`
-    `java`
-    `maven-publish`
-    `signing`
     id("org.danilopianini.git-sensitive-semantic-versioning")
     kotlin("jvm")
     id("com.gradle.plugin-publish")
@@ -59,6 +56,10 @@ tasks.withType<KotlinCompile> {
         allWarningsAsErrors = true
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+}
+
+tasks.withType<Copy> {
+    duplicatesStrategy = org.gradle.api.file.DuplicatesStrategy.WARN
 }
 
 publishOnCentral {
