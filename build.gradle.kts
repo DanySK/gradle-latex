@@ -69,10 +69,6 @@ publishOnCentral {
         user = "DanySK"
         password = System.getenv("GITHUB_TOKEN")
     }
-    repository(mavenCentral().url.replace("://", "://s01.")) {
-        user = mavenCentral().user()
-        password = mavenCentral().password()
-    }
 }
 
 tasks {
