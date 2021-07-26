@@ -27,16 +27,6 @@ val pluginImplementationClass = "org.danilopianini.gradle.latex.Latex"
 
 repositories {
     mavenCentral()
-    jcenter {
-        content {
-            onlyForConfigurations(
-                "detekt",
-                "dokkaJavadocPlugin",
-                "dokkaJavadocRuntime",
-                "dokkaRuntime"
-            )
-        }
-    }
 }
 
 dependencies {
