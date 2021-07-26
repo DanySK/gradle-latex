@@ -5,7 +5,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.create
 
 /**
- * A Plugin configuring the project for publishing on Maven Central
+ * A Plugin configuring the project for publishing on Maven Central.
  */
 class Latex : Plugin<Project> {
     companion object {
@@ -13,6 +13,10 @@ class Latex : Plugin<Project> {
          * The name of the publication to be created.
          */
         const val TASK_GROUP = "LaTeX"
+
+        /**
+         * The extension name, entry point for the DSL.
+         */
         const val EXTENSION_NAME = "latex"
     }
 

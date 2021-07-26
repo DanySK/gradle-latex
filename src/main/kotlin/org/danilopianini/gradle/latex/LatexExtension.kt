@@ -9,20 +9,27 @@ import org.gradle.kotlin.dsl.register
 import java.util.concurrent.TimeUnit
 import java.io.Serializable
 
-inline fun <reified T> Project.propertyWithDefault(default: T): Property<T> =
+private inline fun <reified T> Project.propertyWithDefault(default: T): Property<T> =
     objects.property(T::class.java).apply { convention(default) }
 
-inline fun <reified T> Project.propertyWithDefault(noinline default: () -> T): Property<T> =
+private inline fun <reified T> Project.propertyWithDefault(noinline default: () -> T): Property<T> =
     objects.property(T::class.java).apply { convention(default()) }
 
 /**
  * Gradle extension to create new dynamic tasks & maintain and manage latex artifacts.
- * Registered to Gradle as extension in LatexPlugin. Thereafter the instance can be accessed via project.latex
+ * Registered to Gradle as extension in LatexPlugin. Thereafter the instance can be accessed via project.latex.
  *
+ * Allows for configuring:
+ *   - [terminalEmulator], defaulting to bash,
+ *   - [waitTime], time after which a command is considered stuck,
+ *   - [waitUnit], the unit of measure of the previous time,
+ *   - [pdfLatexCommand], the command for compiling latex,
+ *   - [bibTexCommand], the command for producing the bbl files,
+ *   - [inkscapeCommand] (currently unused),
+ *   - [gitLatexdiffCommand] (currently unused).
  */
 open class LatexExtension @JvmOverloads constructor(
     private val project: Project,
-    // val auxDir: Property<File> = project.propertyWithDefault(project.file(".gradle/latex-temp")),
     val terminalEmulator: Property<String> = project.propertyWithDefault("bash"),
     val waitTime: Property<Long> = project.propertyWithDefault(1),
     val waitUnit: Property<TimeUnit> = project.propertyWithDefault(TimeUnit.MINUTES),
@@ -32,11 +39,17 @@ open class LatexExtension @JvmOverloads constructor(
     val gitLatexdiffCommand: Property<String> = project.propertyWithDefault("git latexdiff")
 ) : Serializable {
 
+    /**
+     * Runs all Gradle-LaTeX tasks.
+     */
     val runAll by project.tasks.register<DefaultTask>("buildLatex") {
         group = Latex.TASK_GROUP
         description = "Run all LaTeX tasks"
     }
 
+    /**
+     * DSL component making strings invokable.
+     */
     @JvmOverloads operator fun String.invoke(configuration: LatexDSL.() -> Unit = { }): LatexArtifact =
         LatexDSL(project, this)
             .also(configuration)
@@ -76,6 +89,6 @@ open class LatexExtension @JvmOverloads constructor(
             }
 
     companion object {
-        const val serialVersionUID = 1L
+        private const val serialVersionUID = 1L
     }
 }

@@ -7,6 +7,16 @@ import java.io.Serializable
  * Represents a TeX artifact which will can be compiled into a PDF.
  * Used to maintain a graph of dependencies.
  *
+ * It requires the artifact [name],
+ * the [tex] root,
+ * the [aux] file,
+ * the resulting [pdf],
+ * the bibliography generated file [bbl],
+ * the list of [imageFiles],
+ * the compilation [extraArgs],
+ * the [diffs],
+ * and the files this artifact is [watching].
+ *
  */
 data class LatexArtifact(
     val name: String,
@@ -39,7 +49,8 @@ data class LatexArtifact(
             throw IllegalStateException("Illegal name $name")
         }
     }
+
     companion object {
-        const val serialVersionUID = 1L
+        private const val serialVersionUID = 1L
     }
 }

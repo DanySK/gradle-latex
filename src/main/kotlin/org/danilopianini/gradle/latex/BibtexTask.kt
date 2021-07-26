@@ -8,10 +8,19 @@ import java.nio.file.Files
 import javax.inject.Inject
 import kotlin.io.path.ExperimentalPathApi
 
+/**
+ * Runs bibtex.
+ */
 open class BibtexTask @Inject constructor(artifact: LatexArtifact) : LatexTask(artifact) {
 
+    /**
+     * Reads the aux file.
+     */
     val auxContent @Input get() = artifact.aux.readText()
 
+    /**
+     * Reads the bbl file output.
+     */
     val bbl @OutputFile get() = project.file(artifact.bbl)
 
     @Console

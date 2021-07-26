@@ -13,6 +13,9 @@ import javax.inject.Inject
 import kotlin.io.path.ExperimentalPathApi
 import kotlin.io.path.createTempFile
 
+/**
+ * Abstract class for all the tasks related to LaTeX.
+ */
 abstract class LatexTask @Inject constructor(@Input protected val artifact: LatexArtifact) : DefaultTask() {
     /**
      * Latex artifact used to run current task.
@@ -26,6 +29,9 @@ abstract class LatexTask @Inject constructor(@Input protected val artifact: Late
         logging.captureStandardOutput(LogLevel.ERROR)
     }
 
+    /**
+     * runs the provided String as a command on the selected [terminalEmulator].
+     */
     @ExperimentalPathApi
     fun String.runScript(
         terminalEmulator: String = extension.terminalEmulator.get(),
