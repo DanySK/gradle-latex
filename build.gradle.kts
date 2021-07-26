@@ -10,8 +10,7 @@ plugins {
     id("com.gradle.plugin-publish")
     id("org.danilopianini.publish-on-central")
     id("org.jetbrains.dokka")
-    id("io.gitlab.arturbosch.detekt")
-    id("org.jlleitschuh.gradle.ktlint")
+    id("kotlin-qa")
 }
 
 gitSemVer {
@@ -81,17 +80,6 @@ tasks {
             outputDir.mkdirs()
             file("$outputDir/plugin-classpath.txt").writeText(sourceSets.main.get().runtimeClasspath.joinToString("\n"))
         }
-    }
-}
-
-detekt {
-    failFast = true
-    buildUponDefaultConfig = true
-    config = files("$projectDir/config/detekt.yml")
-    reports {
-        html.enabled = true // observe findings in your browser with structure and code snippets
-        xml.enabled = true // checkstyle like format mainly for integrations like Jenkins
-        txt.enabled = true // similar to the console output, contains issue signature to manually edit baseline files
     }
 }
 
